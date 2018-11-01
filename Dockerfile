@@ -4,7 +4,9 @@ COPY . /app
 
 WORKDIR /app
 
-RUN npm install --unsafe-perm
+RUN npm set unsafe-perm true
+
+RUN npm install
 
 RUN $(npm bin)/ng build --prod
 
