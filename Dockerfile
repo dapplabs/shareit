@@ -4,9 +4,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN npm install
-
-RUN npm install --save-dev @angular/cli sass
+RUN npm install --unsafe-perm
 
 RUN $(npm bin)/ng build --prod
 
