@@ -8,7 +8,7 @@ RUN npm install
 
 RUN npm install --save-dev @angular/cli sass
 
-RUN $(npm bin)/ng build
+RUN $(npm bin)/ng build --prod
 
 FROM nginx
 
