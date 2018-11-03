@@ -2,13 +2,6 @@
   margin: 20px;
 }
 
-.mat-card-title{
-  overflow: hide;
-}
-.mat-card-content {
-  overflow: hide;
-}
-
 .dashboard-card {
   position: absolute;
   top: 15px;
@@ -16,9 +9,7 @@
   right: 15px;
   bottom: 15px;
 }
-.mat-grid-list{
-  overflow: scroll;
-}
+
 .more-button {
   position: absolute;
   top: 5px;

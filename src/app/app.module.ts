@@ -19,7 +19,7 @@ import { NewsComponent } from './navigation/news/news.component';
 import { UploadComponent } from './navigation/upload/upload.component';
 import { AboutComponent } from './navigation/about/about.component';
 import { AccountService } from './services/account.service';
-import { InfiniteScrollModule } from '@thisissoon/angular-infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [

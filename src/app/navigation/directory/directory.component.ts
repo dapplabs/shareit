@@ -9,16 +9,6 @@ import { DirectoryService } from 'src/app/services/directory.service';
   styleUrls: ['./directory.component.scss'],
 })
 export class DirectoryComponent implements OnInit {
-  @HostListener("scroll", ["$event"])
-  onWindowScroll() {
-    //In chrome and some browser scroll is given to body tag
-    let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
-    let max = document.documentElement.scrollHeight;
-    // pos/max will give you the distance between scroll bottom and and bottom of screen in percentage.
-    if(pos == max )   {
-      this.onScroll();
-    }
-  }
   @ViewChild('grid-container') elementView;
   posts = [];
   breakpoint = 0;
@@ -36,16 +26,15 @@ export class DirectoryComponent implements OnInit {
     });
   }
 
+  //This method should be called when scroll down the grid...
   onScroll () {
-    console.log('estoy scsdfmsdoi');
     this.getCards();
   }
 
   onResize(event) {
-    this.breakpoint = event.target.innerWidth/350
+    this.breakpoint = event.target.innerWidth/350;
   }
   
-
   private getCards(){
     if(this.finished) return;
     this.directoryService.getPosts(this.lastPermLink, this.lastAuthor).then((result) => {
@@ -57,7 +46,6 @@ export class DirectoryComponent implements OnInit {
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    
     map(({ matches }) => {
       if (matches) {
         var cards = [];

@@ -1,7 +1,4 @@
-<div class="grid-container" snInfiniteScroll
-(scrollEnd)="onScroll()"
-[offset]="100"
-[disabled]="disabled">
+<div class="grid-container">
   <mat-grid-list [cols]="breakpoint" rowHeight="2:2.5" (window:resize)="onResize($event)">
     <mat-grid-tile *ngFor="let card of posts" [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
@@ -17,14 +14,13 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-
-<!--<div class="search-results"
+<div class="search-results"
     infiniteScroll
     [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50"
     [scrollWindow]="false"
     (scrolled)="onScroll()">
-</div>-->
+</div>
 <div *ngIf="!finished">loading...</div>
 <div class="notification is-warning" *ngIf="finished">
   End of contents...
