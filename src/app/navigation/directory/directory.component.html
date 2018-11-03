@@ -1,0 +1,16 @@
+<div class="grid-container">
+  <mat-grid-list [cols]="breakpoint" rowHeight="2:2.5" (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let card of posts" [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          {{card.body}}
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

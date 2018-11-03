@@ -7,19 +7,28 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { HttpClientModule } from '@angular/common/http';
-import { TestService } from './services/test.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
-import { DashboardComponent } from './navigation/dashboard/dashboard.component';
+import { DirectoryComponent } from './navigation/directory/directory.component';
 import { DirectoryService } from './services/directory.service';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './navigation/home/home.component';
+import { NewsComponent } from './navigation/news/news.component';
+import { UploadComponent } from './navigation/upload/upload.component';
+import { AboutComponent } from './navigation/about/about.component';
+import { AccountService } from './services/account.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    DashboardComponent
+    DirectoryComponent,
+    HomeComponent,
+    NewsComponent,
+    UploadComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +44,18 @@ import { DirectoryService } from './services/directory.service';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'Home', component: HomeComponent},
+      { path: 'Directory', component: DirectoryComponent},
+      { path: 'News', component: NewsComponent},
+      { path: 'Upload', component: UploadComponent},
+      { path: 'About', component: AboutComponent},
+      { path: '**', redirectTo: '' }
+    ])
   ],
-  providers: [TestService, DirectoryService],
+  providers: [AccountService, DirectoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
