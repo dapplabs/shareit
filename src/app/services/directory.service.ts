@@ -7,26 +7,17 @@ import { Injectable, OnInit } from '@angular/core';
 export class DirectoryService {
   constructor() {
     Steem.api.setOptions({url: 'https://api.steemit.com'});
-    console.log({url: 'https://api.steemit.com'});
   }
 
-  getPosts(): any {
-    console.log("holi");
-    /*
-    var query = {
-      tag: 'introduceyourself',
+  getPosts(lastPermLink: string, lastAuthor: string): any {
+    console.log(Steem);
+    const query = {
       limit: 10,
-      start_author: 'lada94',
-      start_permlink: 'introduce-youself-steemit'
+      start_author: lastAuthor,
+      permlink: lastPermLink
     };
-    */
-   var query = {
-      json_metadata: {
-        tags: ["steemit"]
-      }
-    };
-    return Steem.api.getDiscussionsByCreatedAsync(query).then((res, err) => {
-      console.log(err);
+    return Steem.api.getDiscussionsByCreatedAsync(query).then(res => {
+      console.log(res);
       return res;
     });
   }

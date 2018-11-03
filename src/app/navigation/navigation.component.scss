@@ -5,7 +5,10 @@
 .sidenav {
   width: 200px;
 }
-
+.mat-sidenav-content{
+  height: 100%;
+  overflow: hidden;
+}
 .sidenav .mat-toolbar {
   background: inherit;
 }
