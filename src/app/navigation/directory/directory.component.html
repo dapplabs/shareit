@@ -1,7 +1,7 @@
 <div class="grid-container">
   <mat-grid-list [cols]="breakpoint" rowHeight="2:2.5" (window:resize)="onResize($event)">
     <mat-grid-tile *ngFor="let card of posts" [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
+      <mat-card style="background-image: url('https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Free-Download-1080p-Anime-Background-PIC-WPD008543.jpg')" class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
             {{card.title}}
