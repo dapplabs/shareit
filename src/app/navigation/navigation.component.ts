@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ScrollService } from 'src/app/services/scroll.service';
 
 @Component({
   selector: 'app-navigation',
@@ -14,5 +15,11 @@ export class NavigationComponent {
       map(result => result.matches)
     );
     
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private scrollContentService: ScrollService) {
+
+  }
+
+  onScroll() {
+    this.scrollContentService.announceScroll('scrolled');
+  }
 }

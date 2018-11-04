@@ -12,7 +12,11 @@
       <a mat-list-item routerLink="/About">About</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content infinite-scroll
+        [infiniteScrollDistance]="20"
+        [infiniteScrollThrottle]="3000"
+        (scrolled)="onScroll()"
+        [scrollWindow]="false" >
     <mat-toolbar color="primary">
       <button
         type="button"

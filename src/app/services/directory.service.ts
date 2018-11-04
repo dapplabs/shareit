@@ -12,7 +12,7 @@ export class DirectoryService {
   getPosts(lastPermLink: string, lastAuthor: string): any {
     console.log(Steem);
     const query = {
-      limit: 20,
+      limit: 5,
       start_author: lastAuthor,
       permlink: lastPermLink
     };

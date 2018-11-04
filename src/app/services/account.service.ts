@@ -12,10 +12,4 @@ export class AccountService {
   getAccount(name: string): any {
     return Steem.api.getAccountsAsync([name]).then((res)=>res);
   }
-  
-  /*getAccount(id: number): any {
-    return Steem.api.getAccountReferences(id, function(err, res) {
-      return res;
-    });
-  }*/
 }
