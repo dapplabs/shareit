@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { DirectoryService } from 'src/app/services/directory.service';
+import { AccountService } from 'src/app/services/account.service';
+import { observable, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-directory',
@@ -11,16 +13,18 @@ import { DirectoryService } from 'src/app/services/directory.service';
 export class DirectoryComponent implements OnInit {
   @ViewChild('grid-container') elementView;
   posts = [];
+  users = [];
+  
   breakpoint = 0;
 
   lastPermLink = '';
   lastAuthor = '';
   finished = false;
 
-  constructor(private directoryService: DirectoryService, private breakpointObserver: BreakpointObserver) {}
+  constructor(private directoryService: DirectoryService, private accountService: AccountService, private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
-    this.breakpoint = window.innerWidth/350
+    this.breakpoint = window.innerWidth/250
     this.directoryService.getPosts(this.lastPermLink, this.lastAuthor).then((result) => {
         this.posts = result;
     });
@@ -32,7 +36,7 @@ export class DirectoryComponent implements OnInit {
   }
 
   onResize(event) {
-    this.breakpoint = event.target.innerWidth/350;
+    this.breakpoint = event.target.innerWidth/250;
   }
   
   private getCards(){
@@ -43,22 +47,4 @@ export class DirectoryComponent implements OnInit {
       this.posts.push(result);
     });
   }
-
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        var cards = [];
-        this.posts.forEach(element => {
-          cards.push({ title: element.title, cols: 1, rows: 1, content: element.body, votes: element.net_votes });
-        });
-        return cards;
-      }
-      var cards = [];
-      this.posts.forEach(element => {
-        cards.push({ title: element.title, cols: 1, rows: 1, content: element.body, votes: element.net_votes });
-      });
-      return cards;
-    })
-  );
 }

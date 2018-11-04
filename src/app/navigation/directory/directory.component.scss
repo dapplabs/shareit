@@ -9,7 +9,12 @@
   right: 15px;
   bottom: 15px;
 }
-
+.mat-card-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; // This is where the magic happens
+}
+  
 .more-button {
   position: absolute;
   top: 5px;
@@ -18,4 +23,7 @@
 
 .dashboard-card-content {
   text-align: center;
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: clip;
 }

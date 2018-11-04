@@ -7,12 +7,15 @@ import { Injectable, OnInit } from '@angular/core';
 export class AccountService {
   constructor() {
     Steem.api.setOptions({url: 'https://api.steemit.com'});
-    console.log({url: 'https://api.steemit.com'});
   }
-
-  getAccount(id: number): any {
-    Steem.api.getAccountReferences(id, function(err, result) {
-      return result;
+  
+  getAccount(name: string): any {
+    return Steem.api.getAccountsAsync([name]).then((res)=>res);
+  }
+  
+  /*getAccount(id: number): any {
+    return Steem.api.getAccountReferences(id, function(err, res) {
+      return res;
     });
-  }
+  }*/
 }
