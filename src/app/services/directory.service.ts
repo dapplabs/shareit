@@ -9,10 +9,10 @@ export class DirectoryService {
     Steem.api.setOptions({url: 'https://api.steemit.com'});
   }
 
-  getPosts(lastPermLink: string, lastAuthor: string): any {
+  getPosts(quantity: number, lastPermLink: string, lastAuthor: string): any {
     console.log(Steem);
     const query = {
-      limit: 5,
+      limit: quantity,
       start_author: lastAuthor,
       permlink: lastPermLink
     };
