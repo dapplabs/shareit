@@ -20,6 +20,7 @@ import { UploadComponent } from './navigation/upload/upload.component';
 import { AboutComponent } from './navigation/about/about.component';
 import { AccountService } from './services/account.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
       { path: '**', redirectTo: '' }
     ])
   ],
-  providers: [AccountService, DirectoryService],
+  providers: [AccountService, DirectoryService, {provide: LocationStrategy, useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
