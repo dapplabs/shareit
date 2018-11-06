@@ -1,18 +1,18 @@
 {
   "configVersion": 1,
-  "index": "C:/Program Files/Git/MyPWA/index.html",
+  "index": "./MyPWA/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "C:/Program Files/Git/MyPWA/favicon.ico",
-        "C:/Program Files/Git/MyPWA/index.html",
-        "C:/Program Files/Git/MyPWA/main.61c71a700c3217ce7cdb.js",
-        "C:/Program Files/Git/MyPWA/polyfills.424507ff36cd6c69b25d.js",
-        "C:/Program Files/Git/MyPWA/runtime.ec2944dd8b20ec099bf3.js",
-        "C:/Program Files/Git/MyPWA/styles.71a7cc9b3de812697edb.css"
+        "./MyPWA/favicon.ico",
+        "./MyPWA/index.html",
+        "./MyPWA/main.61c71a700c3217ce7cdb.js",
+        "./MyPWA/polyfills.424507ff36cd6c69b25d.js",
+        "./MyPWA/runtime.ec2944dd8b20ec099bf3.js",
+        "./MyPWA/styles.71a7cc9b3de812697edb.css"
       ],
       "patterns": [
         "https:\\/\\/fonts\\.googleapis\\.com\\/.*"
@@ -23,34 +23,34 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-128x128.png",
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-144x144.png",
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-152x152.png",
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-192x192.png",
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-384x384.png",
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-512x512.png",
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-72x72.png",
-        "C:/Program Files/Git/MyPWA/assets/icons/icon-96x96.png"
+        "./MyPWA/assets/icons/icon-128x128.png",
+        "./MyPWA/assets/icons/icon-144x144.png",
+        "./MyPWA/assets/icons/icon-152x152.png",
+        "./MyPWA/assets/icons/icon-192x192.png",
+        "./MyPWA/assets/icons/icon-384x384.png",
+        "./MyPWA/assets/icons/icon-512x512.png",
+        "./MyPWA/assets/icons/icon-72x72.png",
+        "./MyPWA/assets/icons/icon-96x96.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "C:/Program Files/Git/MyPWA/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "C:/Program Files/Git/MyPWA/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "C:/Program Files/Git/MyPWA/index.html": "02d2cc7cc7bfa1d3d59c6a0e872c75646b08b4c3",
-    "C:/Program Files/Git/MyPWA/main.61c71a700c3217ce7cdb.js": "6a9e5b48ee121f551bf57800ab1980384cef00f9",
-    "C:/Program Files/Git/MyPWA/polyfills.424507ff36cd6c69b25d.js": "15aa4485255e2910ab9d9e81203d10acd7f933a5",
-    "C:/Program Files/Git/MyPWA/runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
-    "C:/Program Files/Git/MyPWA/styles.71a7cc9b3de812697edb.css": "4960155d15d7e3b235a30a51d251054169f9b513"
+    "./MyPWA/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "./MyPWA/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "./MyPWA/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "./MyPWA/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "./MyPWA/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "./MyPWA/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "./MyPWA/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "./MyPWA/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "./MyPWA/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "./MyPWA/index.html": "5f0e5f1a25b357c53c299b7d5a5ed97a2a7c20a9",
+    "./MyPWA/main.61c71a700c3217ce7cdb.js": "6a9e5b48ee121f551bf57800ab1980384cef00f9",
+    "./MyPWA/polyfills.424507ff36cd6c69b25d.js": "15aa4485255e2910ab9d9e81203d10acd7f933a5",
+    "./MyPWA/runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "./MyPWA/styles.71a7cc9b3de812697edb.css": "4960155d15d7e3b235a30a51d251054169f9b513"
   },
   "navigationUrls": [
     {
