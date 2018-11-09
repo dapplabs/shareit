@@ -1,6 +1,15 @@
 # Shareit
 ## WebPage: https://marce1994.github.io/MyPWA
 
+## Decentralized content sharing application.
+
+This is a colaborative app, that uses steemit.com to reward contributors, and IPFS as web and file hosting.
+
+## IPFS gateways
+https://ipfs.infura.io/
+
+-------------
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
 ## Development server
