@@ -21,6 +21,8 @@ import { AboutComponent } from './navigation/about/about.component';
 import { AccountService } from './services/account.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PlayComponent } from './navigation/play/play.component';
+import { MatVideoModule } from 'mat-video';
 
 @NgModule({
   declarations: [
@@ -30,10 +32,12 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HomeComponent,
     NewsComponent,
     UploadComponent,
-    AboutComponent
+    AboutComponent,
+    PlayComponent
   ],
   imports: [
     InfiniteScrollModule,
+    MatVideoModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -55,6 +59,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       { path: 'News', component: NewsComponent},
       { path: 'Upload', component: UploadComponent},
       { path: 'About', component: AboutComponent},
+      { path: 'Play/:hash', component: PlayComponent},
       { path: '**', redirectTo: '' }
     ])
   ],

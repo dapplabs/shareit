@@ -1,0 +1,13 @@
+<div id="player-div" *ngIf="loaded">
+  <mat-video title="My Tutorial Title" [autoplay]="true" [preload]="true" [fullscreen]="true" [download]="true" color="accent"
+    spinner="spin">
+    <source matVideoSource src="{{ipfsServers[0]+hash}}" type="video/mp4">
+    <!--<source src="tutorial.webm" type="video/webm">-->
+    <!--<track matVideoTrack src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">-->
+    <!--<track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">-->
+  </mat-video>
+</div>
+<div *ngIf="!loaded">
+  Loading...
+</div>
+{{ipfsServers[0]+hash}}

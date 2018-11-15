@@ -19,7 +19,7 @@
 .dashboard-card-content {
   left: 10px;
   top: 40px;
-  bottom: 10px;
+  bottom: 30px;
   right: 10px;
   line-height: 20px;
   position: absolute;
@@ -37,4 +37,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.mat-card-actions{
+  bottom: 10px;
+  position: absolute;
 }

@@ -18,6 +18,10 @@ export class DirectoryService {
     };
     return Steem.api.getDiscussionsByCreatedAsync(query).then(res => {
       console.log(res);
+      res.forEach(element => {
+        element.body = "Where...am I...? Before he knows it, Kirito has made a full-dive into an epic, fantasy-like virtual world. With only a murky recollection of what happened right before he logged in, he starts to wander around, searching for clues. He comes upon an enormous, pitch dark tree (the Gigas Cedar), where he encounters a boy. My name is Eugeo. Nice to meet you, Kirito. Although he is supposedly a resident of the virtual world – an NPC – the boy shows the same array of emotions as any human being. As Kirito bonds with Eugeo, he continues to search for a way to log out of this world. Meanwhile, he remembers a certain memory deep down within him. He remembers racing through the mountains with Eugeo as a child... A memory that he should not have in the first place. And in this memory, he sees someone other than Eugeo, a young blond girl. Her name is Alice. And it is a name that must never be forgotten...";
+        element.title = "Sword Art Online - Alicization 2018"
+      });
       return res;
     });
   }

@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { map  } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { DOCUMENT } from "@angular/platform-browser";
 
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { DirectoryService } from 'src/app/services/directory.service';
@@ -19,6 +18,7 @@ export class DirectoryComponent implements OnInit {
   posts = [];
   breakpoint = 0;
   subscription: Subscription;
+  hash = "QmU1GSqu4w29Pt7EEM57Lhte8Lce6e7kuhRHo6rSNb2UaC";
 
   lastPermLink = '';
   lastAuthor = '';
@@ -34,7 +34,7 @@ export class DirectoryComponent implements OnInit {
 
   ngOnInit() {
     this.breakpoint = window.innerWidth/350;
-    this.directoryService.getPosts(this.breakpoint*2,this.lastPermLink, this.lastAuthor).then((result) => {
+    this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
         this.posts = result;
     });
     
@@ -46,7 +46,7 @@ export class DirectoryComponent implements OnInit {
   
   private getCards(){
     if(this.finished) return;
-    this.directoryService.getPosts(this.breakpoint*2,this.lastPermLink, this.lastAuthor).then((result) => {
+    this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
       this.lastAuthor = result[result.length -1].author;
       this.lastPermLink = result[result.length -1].permlink;
       this.posts = this.posts.concat(result);
