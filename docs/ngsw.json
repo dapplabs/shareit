@@ -1,18 +1,18 @@
 {
   "configVersion": 1,
-  "index": "./MyPWA/index.html",
+  "index": "./index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "./MyPWA/favicon.ico",
-        "./MyPWA/index.html",
-        "./MyPWA/main.03770096889f8bd39242.js",
-        "./MyPWA/polyfills.16b44938e34ee2de511b.js",
-        "./MyPWA/runtime.ec2944dd8b20ec099bf3.js",
-        "./MyPWA/styles.6692fa701054c1c62c43.css"
+        "./favicon.ico",
+        "./index.html",
+        "./main.03770096889f8bd39242.js",
+        "./polyfills.16b44938e34ee2de511b.js",
+        "./runtime.ec2944dd8b20ec099bf3.js",
+        "./styles.6692fa701054c1c62c43.css"
       ],
       "patterns": [
         "https:\\/\\/fonts\\.googleapis\\.com\\/.*"
@@ -23,34 +23,34 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "./MyPWA/assets/icons/icon-128x128.png",
-        "./MyPWA/assets/icons/icon-144x144.png",
-        "./MyPWA/assets/icons/icon-152x152.png",
-        "./MyPWA/assets/icons/icon-192x192.png",
-        "./MyPWA/assets/icons/icon-384x384.png",
-        "./MyPWA/assets/icons/icon-512x512.png",
-        "./MyPWA/assets/icons/icon-72x72.png",
-        "./MyPWA/assets/icons/icon-96x96.png"
+        "./assets/icons/icon-128x128.png",
+        "./assets/icons/icon-144x144.png",
+        "./assets/icons/icon-152x152.png",
+        "./assets/icons/icon-192x192.png",
+        "./assets/icons/icon-384x384.png",
+        "./assets/icons/icon-512x512.png",
+        "./assets/icons/icon-72x72.png",
+        "./assets/icons/icon-96x96.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "./MyPWA/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
-    "./MyPWA/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "./MyPWA/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "./MyPWA/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "./MyPWA/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "./MyPWA/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "./MyPWA/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
-    "./MyPWA/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
-    "./MyPWA/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "./MyPWA/index.html": "75a028af104e0510dfaa279de7e5e4feefd311da",
-    "./MyPWA/main.03770096889f8bd39242.js": "a3e475fd12dad194805b8bc4eff68baee59922df",
-    "./MyPWA/polyfills.16b44938e34ee2de511b.js": "ab97e367ecf0b4cebc6a661bd4f54bf9da283afd",
-    "./MyPWA/runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
-    "./MyPWA/styles.6692fa701054c1c62c43.css": "e4107537cbf96401bfb90c62ba39b7b64169cd1a"
+    "./assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "./assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "./assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "./assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "./assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "./assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "./assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "./assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "./index.html": "4f5fb1273725de21cf8e0901c0eb04a417cd048b",
+    "./main.03770096889f8bd39242.js": "a3e475fd12dad194805b8bc4eff68baee59922df",
+    "./polyfills.16b44938e34ee2de511b.js": "ab97e367ecf0b4cebc6a661bd4f54bf9da283afd",
+    "./runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "./styles.6692fa701054c1c62c43.css": "e4107537cbf96401bfb90c62ba39b7b64169cd1a"
   },
   "navigationUrls": [
     {
