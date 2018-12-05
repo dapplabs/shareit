@@ -12,13 +12,11 @@ import { ScrollService } from 'src/app/services/scroll.service';
   styleUrls: ['./directory.component.scss'],
 })
 
-
-
 export class DirectoryComponent implements OnInit {
   posts = [];
   breakpoint = 0;
   subscription: Subscription;
-  hash = "QmU1GSqu4w29Pt7EEM57Lhte8Lce6e7kuhRHo6rSNb2UaC";
+  hash = "QmZM89vqBjmAmeC5mcBzNrFYbbViQVdDc5iNK9V5pLKxja";
 
   lastPermLink = '';
   lastAuthor = '';

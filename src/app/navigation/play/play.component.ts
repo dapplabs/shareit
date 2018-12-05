@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PlayComponent implements OnInit {
 
   hash: string = "";
-  ipfsServers = ["https://ipfs.io/ipfs/"];
+  ipfsServers = ["https://ipfs.io/ipfs/","http://10.244.237.128:8081"];
   loaded = false;
 
   private sub: any;
