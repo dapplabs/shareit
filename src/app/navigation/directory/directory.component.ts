@@ -16,8 +16,7 @@ export class DirectoryComponent implements OnInit {
   posts = [];
   breakpoint = 0;
   subscription: Subscription;
-  hash = "QmZM89vqBjmAmeC5mcBzNrFYbbViQVdDc5iNK9V5pLKxja";
-
+  
   lastPermLink = '';
   lastAuthor = '';
   finished = false;
@@ -33,7 +32,17 @@ export class DirectoryComponent implements OnInit {
   ngOnInit() {
     this.breakpoint = window.innerWidth/350;
     this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
-        this.posts = result;
+        this.posts = result.map(function(element){
+          return {
+            title: element.title,
+            body: element.body,
+            cols: 1,
+            rows: 1,
+            votes: element.net_votes,
+            ipfshash: JSON.parse(element.json_metadata).ipfshash
+          }
+        });
+        console.log(this.posts);
     });
     
   }
@@ -56,7 +65,9 @@ export class DirectoryComponent implements OnInit {
     map(({ matches }) => {
       var cards = [];
       this.posts.forEach(element => {
-        cards.push({ title: element.title, cols: 1, rows: 1, content: element.body, votes: element.net_votes });
+        element.cols = 1;
+        element.rows = 1;
+        cards.push(element);
       });
       return cards;
     })

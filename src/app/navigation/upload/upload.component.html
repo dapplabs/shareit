@@ -1,3 +1,27 @@
-<p>
-  upload works!
-</p>
+<form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Title" formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Description" formControlName="body"></textarea>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <input matInput placeholder="file hash" formControlName="hash">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="tags" formControlName="tags">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="User name" formControlName="username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="private post key" formControlName="key">
+  </mat-form-field>
+
+  <button type="submit" mat-flat-button [disabled]="!myform.valid" color="primary">Publish</button>
+</form>

@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatOptionModule, MatFormFieldModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatSelectModule, MatPaginatorModule, MatTreeModule, MatTooltipModule, MatTabsModule, MatTableModule, MatStepperModule, MatSortModule, MatSnackBarModule, MatSlideToggleModule, MatSliderModule, MatRippleModule, MatRadioModule, MatProgressSpinnerModule, MatProgressBarModule, MatNativeDateModule, MatInputModule, MatExpansionModule, MatDividerModule, MatDialogModule, MatDatepickerModule, MatChipsModule, MatCheckboxModule, MatButtonToggleModule, MatBottomSheetModule, MatBadgeModule, MatAutocompleteModule } from '@angular/material';
 import { DirectoryComponent } from './navigation/directory/directory.component';
 import { DirectoryService } from './services/directory.service';
 import { RouterModule } from '@angular/router';
@@ -23,6 +23,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PlayComponent } from './navigation/play/play.component';
 import { MatVideoModule } from 'mat-video';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,10 +37,50 @@ import { MatVideoModule } from 'mat-video';
     PlayComponent
   ],
   imports: [
+    MatAutocompleteModule,
+    MatBadgeModule,
+    ReactiveFormsModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
     InfiniteScrollModule,
     MatVideoModule,
     BrowserModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatFormFieldModule,
     AppRoutingModule,
+    MatOptionModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
@@ -54,16 +95,16 @@ import { MatVideoModule } from 'mat-video';
     MatMenuModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'Home', component: HomeComponent},
-      { path: 'Directory', component: DirectoryComponent},
-      { path: 'News', component: NewsComponent},
-      { path: 'Upload', component: UploadComponent},
-      { path: 'About', component: AboutComponent},
-      { path: 'Play/:hash', component: PlayComponent},
+      { path: 'Home', component: HomeComponent },
+      { path: 'Directory', component: DirectoryComponent },
+      { path: 'News', component: NewsComponent },
+      { path: 'Upload', component: UploadComponent },
+      { path: 'About', component: AboutComponent },
+      { path: 'Play/:hash', component: PlayComponent },
       { path: '**', redirectTo: '' }
     ])
   ],
-  providers: [AccountService, DirectoryService, {provide: LocationStrategy, useClass:HashLocationStrategy}],
+  providers: [AccountService, DirectoryService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

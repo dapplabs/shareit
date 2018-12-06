@@ -2165,9 +2165,6 @@ MIT
 @angular/platform-browser
 MIT
 
-@angular/router
-MIT
-
 @angular/cdk
 MIT
 The MIT License
@@ -2193,14 +2190,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+@angular/material/bottom-sheet
+
+@angular/material/dialog
+
+@angular/forms
+MIT
+
+@angular/material/button
+
+@angular/material/datepicker
+
+@angular/material/tooltip
+
+@angular/material/snack-bar
+
+@angular/router
+MIT
+
 @angular/material/grid-list
 
 @angular/material/card
 
-@angular/material/button
-
-@angular/forms
-MIT
+@angular/material/form-field
 
 mat-video
 MIT
