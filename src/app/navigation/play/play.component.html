@@ -1,12 +1,57 @@
 <div id="player-div" *ngIf="loaded">
-  <mat-video title="My Tutorial Title" [autoplay]="true" [preload]="true" [fullscreen]="true" [download]="true" color="accent"
-    spinner="spin">
-    <source matVideoSource src="{{ipfsServers[0]+hash}}" type="video/mp4">
+  <mat-video title="{{post.title}}" [autoplay]="true" [preload]="true" [fullscreen]="true" [download]="true" color="primary"
+    spinner="hourglass">
+    <source matVideoSource src="{{ipfsServers[0]+post.hash}}" type="video/mp4">
     <!--<source src="tutorial.webm" type="video/webm">-->
     <!--<track matVideoTrack src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">-->
     <!--<track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">-->
   </mat-video>
+  <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar [src]="'https://steemitimages.com/u/pablobianco/avatar'">
+      <mat-card-title>
+        <span>{{post.title}}</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        S03E01
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{post.body}}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of post.tags">
+          {{tag}}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card-footer>
+  </mat-card>
+  
+  <mat-card *ngFor="let reply of replies">
+      <mat-card-header>
+        <img mat-card-avatar [src]="'https://steemitimages.com/u/'+reply.author+'/avatar'">
+        <mat-card-title>
+          <span>{{reply.author}}</span>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{reply.title}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{reply.body}}</p>
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-chip-list>
+          <mat-chip *ngFor="let tag of reply.tags">
+            {{tag}}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-footer>
+    </mat-card>
+
 </div>
+
 <div *ngIf="!loaded">
   Loading...
 </div>

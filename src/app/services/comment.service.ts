@@ -38,11 +38,11 @@ export class CommentService {
     // By default permlink will be the date
     permlink = permlink || new Date().toISOString().replace(/[^a-zA-Z0-9]+/g, '').toLowerCase();
     jsonMetadata = jsonMetadata || {};
-    jsonMetadata['tags'].push("shareit-test");
+    jsonMetadata['tags'].push("shareit-test1");
     jsonMetadata['tags'].push("anime");
     console.log(jsonMetadata);
 
-    Steem.broadcast.comment(postingkey, '', main_tag, username, permlink + '-post', title, body, jsonMetadata, function (err, result) {
+    Steem.broadcast.comment(postingkey, 'pablobianco', 'https-marce1994-github-io-mypwa', username, 'shareit-anime' + permlink, title, body, jsonMetadata, function (err, result) {
       console.log(err, result);
     });
   }

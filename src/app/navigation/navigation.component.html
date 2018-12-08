@@ -5,11 +5,11 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/Home">Home</a>
-      <a mat-list-item routerLink="/Directory">Directory</a>
-      <a mat-list-item routerLink="/News">News</a>
-      <a mat-list-item routerLink="/Upload">Upload</a>
-      <a mat-list-item routerLink="/About">About</a>
+      <a ng-click="collapsed=!collapsed" mat-list-item routerLink="/Home">Home</a>
+      <a ng-click="collapsed=!collapsed" mat-list-item routerLink="/Directory">Directory</a>
+      <a ng-click="collapsed=!collapsed" mat-list-item routerLink="/News">News</a>
+      <a ng-click="collapsed=!collapsed" mat-list-item routerLink="/Upload">Upload</a>
+      <a ng-click="collapsed=!collapsed" mat-list-item routerLink="/About">About</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content infinite-scroll

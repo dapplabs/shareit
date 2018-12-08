@@ -100,7 +100,7 @@ import { ReactiveFormsModule } from '@angular/forms';
       { path: 'News', component: NewsComponent },
       { path: 'Upload', component: UploadComponent },
       { path: 'About', component: AboutComponent },
-      { path: 'Play/:hash', component: PlayComponent },
+      { path: 'Play/:author/:permlink', component: PlayComponent },
       { path: '**', redirectTo: '' }
     ])
   ],

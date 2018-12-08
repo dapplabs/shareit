@@ -36,6 +36,8 @@ export class DirectoryComponent implements OnInit {
           return {
             title: element.title,
             body: element.body,
+            permlink: element.permlink,
+            author: element.author,
             cols: 1,
             rows: 1,
             votes: element.net_votes,
