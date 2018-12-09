@@ -14,8 +14,7 @@ export class PlayComponent implements OnInit {
   post: any = {};
 
   ipfsServers = [
-    "http://190.210.252.108:8081/ipfs/",
-    "https://ipfs.io/ipfs/",
+    "ipfs.infura.io",
   ];
   loaded = false;
 
