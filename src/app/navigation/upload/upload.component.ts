@@ -17,6 +17,7 @@ export class UploadComponent implements OnInit {
   username: FormControl;
   key: FormControl;
   hash: FormControl;
+  seasonepisode: FormControl;
 
   constructor(private commentService: CommentService, private accountService: AccountService) { }
 
@@ -32,6 +33,7 @@ export class UploadComponent implements OnInit {
     this.username = new FormControl('', Validators.required);
     this.key = new FormControl('', Validators.required);
     this.hash = new FormControl('', Validators.required);
+    this.seasonepisode = new FormControl('', Validators.required);
   }
 
   createForm() {
@@ -41,7 +43,8 @@ export class UploadComponent implements OnInit {
       tags: this.tags,
       username: this.username,
       key: this.key,
-      hash: this.hash
+      hash: this.hash,
+      seasonepisode: this.seasonepisode
     });
   }
   
@@ -53,7 +56,7 @@ export class UploadComponent implements OnInit {
         "anime",
         this.title.value,
         this.body.value,
-        { ipfshash: this.hash.value, tags: this.tags.value.replace(/ /g, "").split(",") },
+        { seasonepisode: this.seasonepisode.value.toUpperCase(),ipfshash: this.hash.value, tags: this.tags.value.replace(/ /g, "").split(",") },
         null
       );
     }

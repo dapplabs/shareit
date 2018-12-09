@@ -2,6 +2,7 @@
   <mat-video title="{{post.title}}" [autoplay]="true" [preload]="true" [fullscreen]="true" [download]="true" color="primary"
     spinner="hourglass">
     <source matVideoSource src="{{ipfsServers[0]+post.hash}}" type="video/mp4">
+      <source matVideoSource src="{{ipfsServers[1]+post.hash}}" type="video/mp4">
     <!--<source src="tutorial.webm" type="video/webm">-->
     <!--<track matVideoTrack src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">-->
     <!--<track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">-->
@@ -13,7 +14,7 @@
         <span>{{post.title}}</span>
       </mat-card-title>
       <mat-card-subtitle>
-        S03E01
+        {{post.seasonepisode}}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>

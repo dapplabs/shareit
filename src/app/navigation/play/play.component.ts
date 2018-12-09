@@ -14,8 +14,8 @@ export class PlayComponent implements OnInit {
   post: any = {};
 
   ipfsServers = [
+    "http://190.210.252.108:8081/ipfs/",
     "https://ipfs.io/ipfs/",
-    "http://10.244.237.128:8081/ipfs/",
   ];
   loaded = false;
 
@@ -31,14 +31,13 @@ export class PlayComponent implements OnInit {
     var self = this;
     Steem.api.getContentReplies(author, permlink, function (err, result) {
       console.log(err, result);
-      self.replies = result.map((res)=>{return {author: res.author, body: res.body, title: 'reputation: '+ Steem.formatter.reputation(res.author_reputation) +' mana: ' + res.total_vote_weight, tags: [] }})
-      /*this.replies = {
-        author: result.author,
-        body: result.body,
-        title: result.title,
-        tags: JSON.parse(result.json_metadata).tags,
-      };*/
-      //return result;
+      self.replies = result.map((res)=>{
+        return {
+          author: res.author,
+          body: res.body,
+          title: 'reputation: '+ Steem.formatter.reputation(res.author_reputation) +' mana: ' + res.total_vote_weight,
+          tags: []
+        }});
     });
   }
 
@@ -48,10 +47,11 @@ export class PlayComponent implements OnInit {
       console.log(err, result, "sdfsdfdsf");
       self.post = {
         author: result.author,
-        body: result.body,
+        body: result.body.split("}}").pop(),
         title: result.title,
         tags: JSON.parse(result.json_metadata).tags,
-        hash: JSON.parse(result.json_metadata).ipfshash
+        hash: JSON.parse(result.json_metadata).ipfshash,
+        seasonepisode: JSON.parse(result.json_metadata).seasonepisode
       };
       console.log(JSON.parse(result.json_metadata).tags);
       self.replies = result.replies;

@@ -35,7 +35,7 @@ export class DirectoryComponent implements OnInit {
         this.posts = result.map(function(element){
           return {
             title: element.title,
-            body: element.body,
+            body: element.body.split("}}").pop(),
             permlink: element.permlink,
             author: element.author,
             cols: 1,
@@ -58,7 +58,19 @@ export class DirectoryComponent implements OnInit {
     this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
       this.lastAuthor = result[result.length -1].author;
       this.lastPermLink = result[result.length -1].permlink;
-      this.posts = this.posts.concat(result);
+      
+      this.posts = this.posts.concat(result.map(function(element){
+        return {
+          title: element.title,
+          body: element.body.split("}}").pop(),
+          permlink: element.permlink,
+          author: element.author,
+          cols: 1,
+          rows: 1,
+          votes: element.net_votes,
+          ipfshash: JSON.parse(element.json_metadata).ipfshash
+        }
+      }));
     });
   }
 
