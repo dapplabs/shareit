@@ -8,7 +8,6 @@ import * as Steem from '../../../../node_modules/steem/lib';
   styleUrls: ['./play.component.scss']
 })
 export class PlayComponent implements OnInit {
-  //hash: string = "";
   author: string = "";
   permlink: string = "";
   post: any = {};
