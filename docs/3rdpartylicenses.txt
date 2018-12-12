@@ -2216,11 +2216,21 @@ MIT
 
 @angular/material/chips
 
-mat-video
+@angular/material/icon
+
+@angular/material/sidenav
+
+@angular/material/toolbar
+
+@angular/material/core
+
+@angular/material/list
+
+ngx-infinite-scroll
 MIT
 MIT License
 
-Copyright (c) 2018 nkoehler
+Copyright (c) 2017 Roberto Simonetti
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -2241,23 +2251,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-@angular/material/icon
-
-@angular/material/slider
-
-@angular/material/sidenav
-
-@angular/material/toolbar
-
-@angular/material/core
-
-@angular/material/list
-
-ngx-infinite-scroll
+mat-video
 MIT
 MIT License
 
-Copyright (c) 2017 Roberto Simonetti
+Copyright (c) 2018 nkoehler
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

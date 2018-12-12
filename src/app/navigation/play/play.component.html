@@ -1,11 +1,31 @@
 <div class="container" id="player-div" *ngIf="loaded">
-  <mat-video title="{{post.title}}" [autoplay]="true" [preload]="true" [fullscreen]="true" [download]="true" color="primary"
-    spinner="hourglass">
-    <source matVideoSource src="{{ipfsServers[0]+post.hash}}" type="video/mp4">
-    <!--<source src="tutorial.webm" type="video/webm">-->
-    <!--<track matVideoTrack src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">-->
-    <!--<track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">-->
-  </mat-video>
+
+  <div id="hero">
+      <div id="output">
+        <div id="progressBar"></div>
+        <video id='VideoPlayer' #VideoPlayer controls></video>
+      </div>
+      <!-- Statistics -->
+      <div id="status">
+        <div>
+          <span class="show-leech"> </span>
+          <span class="show-seed">Seeding </span>
+          <code>
+
+          </code>
+          <span class="show-leech"> {{textPeers}} </span>
+          <span class="show-seed"> to </span>
+          <code id="numPeers">{{peersText}}</code>.
+        </div>
+        <div>
+          <code id="downloaded">{{downloaded}}</code>
+          of <code id="total">{{length}}</code>
+          — <span id="remaining">{{remaining}}</span><br/>
+          &#x2198;<code id="downloadSpeed">{{downloadSpeed}}</code>
+          / &#x2197;<code id="uploadSpeed">{{uploadSpeed}}</code>
+        </div>
+      </div>
+    </div>
   <div>
     <mat-card>
       <mat-card-header>
