@@ -14,7 +14,7 @@ export class DirectoryService {
   getPosts(quantity: number, lastPermLink: string, lastAuthor: string): any {
     console.log(Steem);
     const query = {
-      tag: "shareitv0.1",
+      tag: "shareitv0.2",
       //app: 'steemit/0.2',
       limit: quantity,
       start_author: lastAuthor,

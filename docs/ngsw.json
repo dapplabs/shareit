@@ -9,7 +9,7 @@
       "urls": [
         "./favicon.ico",
         "./index.html",
-        "./main.3347b88fcccca620f0bd.js",
+        "./main.89ece1307ae67bc27aa7.js",
         "./polyfills.d98f362055f50cbdf4fd.js",
         "./runtime.ec2944dd8b20ec099bf3.js",
         "./scripts.806effac119676237f10.js",
@@ -32,6 +32,7 @@
         "./assets/icons/icon-512x512.png",
         "./assets/icons/icon-72x72.png",
         "./assets/icons/icon-96x96.png",
+        "./assets/moment.min.js",
         "./assets/webtorrent.min.js"
       ],
       "patterns": []
@@ -47,10 +48,11 @@
     "./assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "./assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "./assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "./assets/moment.min.js": "25cc5050075760bd41246313f0941b596d8c5b22",
     "./assets/webtorrent.min.js": "cc726e58a454fe23128399944094f727b49fb0b3",
     "./favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "./index.html": "6b55f7881508003654ef282e9974ef99fa1297f9",
-    "./main.3347b88fcccca620f0bd.js": "89ab9bbf34c8247c3660e5545156b1fa85b4b765",
+    "./index.html": "fbc80dc8ced60de56dc1d2c0e48bb1f4d08bb2bf",
+    "./main.89ece1307ae67bc27aa7.js": "77d85744c3e92fb4016774a6e389f75fd86484d2",
     "./polyfills.d98f362055f50cbdf4fd.js": "f63c699e36db29d85a264a90f2c01f830cd10b5c",
     "./runtime.ec2944dd8b20ec099bf3.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "./scripts.806effac119676237f10.js": "64578ccea55716fff16cb37502889712b619e46e",

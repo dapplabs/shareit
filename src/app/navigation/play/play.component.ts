@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ApplicationRef, ChangeDetectorRef, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as Steem from '../../../../node_modules/steem/lib';
-declare const WebTorrent:any;
+import { BehaviorSubject } from 'rxjs';
+
+declare const WebTorrent: any;
+declare const moment: any;
 declare var $: any;
 
 @Component({
@@ -11,6 +14,7 @@ declare var $: any;
 })
 export class PlayComponent implements OnInit {
   @ViewChild('VideoPlayer') VideoPlayer: ElementRef;
+  @ViewChild('progressbar') ProgressBar: ElementRef;
 
   author: string = "";
   permlink: string = "";
@@ -18,24 +22,34 @@ export class PlayComponent implements OnInit {
   webtorrent: any = {};
   file: any;
 
-  textPeers: string = "";
-  percent: number = 0;
-  remaining: number = 0;
-  downloaded: string = "";
-  length: string = "";
-  downloadSpeed: string = "";
-  uploadSpeed: string = "";
+  textPeers = new BehaviorSubject<string>("");
+  percent = new BehaviorSubject<number>(0);
+  remaining = new BehaviorSubject<string>("");
+  downloaded = new BehaviorSubject<string>("");
+  length = new BehaviorSubject<string>("");
+  downloadSpeed = new BehaviorSubject<string>("");
+  uploadSpeed = new BehaviorSubject<string>("");
+  ended = new BehaviorSubject<boolean>(false);
 
   ipfsServers = [
     "https://shareit-network.ddns.net/ipfs/",
+    "https://ipfs.io/ipfs/",
+    //...
   ];
+
   loaded = false;
 
   replies = [];
 
   private sub: any;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private changeDetectorRef: ChangeDetectorRef) {
+
+    setInterval(() => {
+      // require view to be updated
+      this.changeDetectorRef.markForCheck();
+    }, 500);
+
     this.webtorrent = new WebTorrent();
     console.log(this.webtorrent);
     Steem.api.setOptions({ url: 'https://api.steemit.com' });
@@ -50,27 +64,23 @@ export class PlayComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    this.changeDetectorRef.detach();
+    this.webtorrent.destroy();
     this.sub.unsubscribe();
   }
 
-  public async OnTorrent(){
+  public OnTorrent() {
     var self = this;
 
-    var torrentId = 'https://shareit-network.ddns.net/ipfs/QmaJmQqiQs3MXS84xEVd1XAzuFdbB5HNq3jrZQhgJx9nZn';
+    this.ipfsServers[0]
+
+    var torrentId = this.ipfsServers[0] + this.post.thash;
+    var webseed = this.ipfsServers[0] + this.post.hash;
+    //var torrentId = 'https://shareit-network.ddns.net/ipfs/QmaJmQqiQs3MXS84xEVd1XAzuFdbB5HNq3jrZQhgJx9nZn';
 
     this.webtorrent.add(torrentId, function (torrent) {
-      torrent.addWebSeed("https://shareit-network.ddns.net/ipfs/QmV675T4F5WDBE64UCT3kWuBeVyzDka3KPFYuPBqDBYFXT");
-      console.log("asd");  
-      // Torrents can contain many files. Let's use the .mp4 file
-      /*torrent.files.find(function (file) {
-        console.log("file",file);
-        file.getBlob(function callback (err, blob) {
-          self.file = blob;
-        })
-        /*file.getBlobURL(function callback (url) {
-          self.file = url;
-        })*/
-      /*})*/
+      torrent.addWebSeed(webseed);
+      
       // Torrents can contain many files. Let's use the .mp4 file
       var file = torrent.files.find(function (file) {
         return file.name.endsWith('.mp4')
@@ -85,36 +95,31 @@ export class PlayComponent implements OnInit {
       onProgress()
 
       // Statistics
-      function onProgress () {
-        // Peers
-        self.textPeers = torrent.numPeers + (torrent.numPeers === 1 ? ' peer' : ' peers')
-
-        // Progress
-        self.percent = Math.round(torrent.progress * 100 * 100) / 100;
-        
-        self.downloaded = self.prettyBytes(torrent.downloaded)
-        self.length = self.prettyBytes(torrent.length)
+      function onProgress() {
+        self.textPeers.next(torrent.numPeers + (torrent.numPeers === 1 ? ' peer' : ' peers'));
+        self.percent.next(Math.round(torrent.progress * 100 * 100) / 100)
+        self.downloaded.next(self.prettyBytes(torrent.downloaded))
+        self.length.next(self.prettyBytes(torrent.length))
 
         // Remaining time
-        
+        var remaining
         if (torrent.done) {
-          self.remaining = 0;
+          remaining = 'Done.'
         } else {
-          self.remaining = torrent.timeRemaining / 1000;
-          //remaining = moment.duration(torrent.timeRemaining / 1000, 'seconds').humanize()
-          //remaining = remaining[0].toUpperCase() + remaining.substring(1) + ' remaining.'
+          remaining = moment.duration(torrent.timeRemaining / 1000, 'seconds').humanize()
+          remaining = remaining[0].toUpperCase() + remaining.substring(1) + ' remaining.'
         }
+        self.remaining.next(remaining);
 
         // Speed rates
-        self.downloadSpeed = self.prettyBytes(torrent.downloadSpeed) + '/s'
-        self.uploadSpeed = self.prettyBytes(torrent.uploadSpeed) + '/s'
+        self.downloadSpeed.next(self.prettyBytes(torrent.downloadSpeed) + '/s')
+        self.uploadSpeed.next(self.prettyBytes(torrent.uploadSpeed) + '/s')
       }
-      function onDone () {
-        //$body.className += ' is-seed'
+      function onDone() {
+        self.ended.next(true);
         onProgress()
       }
     })
-    
   }
 
   // Human readable bytes util
@@ -132,13 +137,14 @@ export class PlayComponent implements OnInit {
     var self = this;
     Steem.api.getContentReplies(author, permlink, function (err, result) {
       console.log(err, result);
-      self.replies = result.map((res)=>{
+      self.replies = result.map((res) => {
         return {
           author: res.author,
           body: res.body,
-          title: 'reputation: '+ Steem.formatter.reputation(res.author_reputation) +' mana: ' + res.total_vote_weight,
+          title: 'reputation: ' + Steem.formatter.reputation(res.author_reputation) + ' mana: ' + res.total_vote_weight,
           tags: []
-        }});
+        }
+      });
     });
   }
 
@@ -152,16 +158,21 @@ export class PlayComponent implements OnInit {
         title: result.title,
         tags: JSON.parse(result.json_metadata).tags,
         hash: JSON.parse(result.json_metadata).ipfshash,
-        wthash: JSON.parse(result.json_metadata).wthash,
+        thash: JSON.parse(result.json_metadata).ipfsthash,
         seasonepisode: JSON.parse(result.json_metadata).seasonepisode
       };
+
+      self.OnTorrent();
+
       console.log(JSON.parse(result.json_metadata).tags);
+
       self.replies = result.replies;
+
       console.log(self.replies);
+
       if (self.permlink !== undefined && self.author !== undefined && self.ipfsServers[0] !== undefined) {
         self.loaded = true;
         self.GetReplies(self.author, self.permlink);
-        self.OnTorrent();
       }
     });
   }

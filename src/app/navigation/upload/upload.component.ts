@@ -17,6 +17,7 @@ export class UploadComponent implements OnInit {
   username: FormControl;
   key: FormControl;
   hash: FormControl;
+  torrenthash: FormControl;
   seasonepisode: FormControl;
 
   constructor(private commentService: CommentService, private accountService: AccountService) { }
@@ -33,31 +34,32 @@ export class UploadComponent implements OnInit {
     this.username = new FormControl('', Validators.required);
     this.key = new FormControl('', Validators.required);
     this.hash = new FormControl('', Validators.required);
+    this.torrenthash = new FormControl('', Validators.required);
     this.seasonepisode = new FormControl('', Validators.required);
   }
 
   createForm() {
     this.myform = new FormGroup({
       title: this.title,
-      body: this.body, 
+      body: this.body,
       tags: this.tags,
       username: this.username,
       key: this.key,
       hash: this.hash,
+      torrenthash: this.torrenthash,
       seasonepisode: this.seasonepisode
     });
   }
-  
+
   onSubmit() {
     if (this.myform.valid) {
       this.commentService.Post(
         this.username.value,
         this.key.value,
-        "anime",
+        "shareit",
         this.title.value,
         this.body.value,
-        { seasonepisode: this.seasonepisode.value.toUpperCase(),ipfshash: this.hash.value, tags: this.tags.value.replace(/ /g, "").split(",") },
-        null
+        { seasonepisode: this.seasonepisode.value.toUpperCase(), ipfshash: this.hash.value, ipfsthash: this.torrenthash.value, tags: this.tags.value.replace(/ /g, "").split(",") }
       );
     }
   }

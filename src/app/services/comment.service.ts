@@ -34,21 +34,43 @@ export class CommentService {
  * @param {object} [jsonMetadata] - dictionnary with additional tags, app name, etc,
  * @param {String} [permlink] - permanent link, by default it's the date + -post. eg : 20171237t122520625z-post
  */
-  public Post(username: string, postingkey: string, main_tag: string, title: string, body: string, jsonMetadata: any, permlink: string) {
+  /*public Post(username: string, postingkey: string, main_tag: string, title: string, body: string, jsonMetadata: any) {
     // By default permlink will be the date
-    permlink = permlink || new Date().toISOString().replace(/[^a-zA-Z0-9]+/g, '').toLowerCase();
+    var comment_permlink = new Date().toISOString().replace(/[^a-zA-Z0-9]+/g, '').toLowerCase();
+
     jsonMetadata = jsonMetadata || {};
 
-    jsonMetadata['tags'].unshift("shareitv0.1");
-    jsonMetadata['tags'].push("anime");
-    jsonMetadata.app = "shareit/0.1";
+    jsonMetadata['tags'].unshift("shareitv0.2");
+    jsonMetadata.app = "shareit/0.2";
 
     console.log(jsonMetadata);
-    body = "{{ https://marce1994.github.io/MyPWA/#/Play/"+username+"/" + permlink + " }}" + body;
-    Steem.broadcast.comment(postingkey, '', main_tag, username, permlink, title, body, jsonMetadata, function (err, result) {
+    body = "{{ https://marce1994.github.io/MyPWA/#/Play/"+username+"/" + comment_permlink + " }}" + body;
+    Steem.broadcast.comment(postingkey, '', main_tag, username, comment_permlink, title, body, jsonMetadata, function (err, result) {
       console.log(err, result);
     });
-  }
+  }*/
+
+  public Post(username: string, postingkey: string, main_tag: string, title: string, body: string, jsonMetadata: any) {
+    var permLink = new Date().toISOString().replace(/[^a-zA-Z0-9]+/g, '').toLowerCase();
+    
+    if (permLink.length > 255) {
+      // pay respect to STEEMIT_MAX_PERMLINK_LENGTH
+      permLink.substr(permLink.length - 255, permLink.length);
+    }
+    // permlinks must be lower case and not contain anything but
+    // alphanumeric characters plus dashes
+    permLink = permLink.toLowerCase().replace(/[^a-z0-9-]+/g, "");
+
+    jsonMetadata['tags'].unshift("shareitv0.2");
+    jsonMetadata.app = "shareit/0.2";
+    jsonMetadata = jsonMetadata || {};
+
+    body = "{{ https://marce1994.github.io/MyPWA/#/Play/"+username+"/" + permLink + " }}" + body;
+    
+    Steem.broadcast.comment(postingkey, '',  main_tag, username, permLink, title, body, jsonMetadata, function (err, result) {
+        console.log(err, result);
+    });
+}
   // example
   //post("username", "password", "tag1", "title", "body", { tags: ['tag2', 'tag3']});
 }
