@@ -2208,6 +2208,8 @@ MIT
 @angular/router
 MIT
 
+@angular/material/progress-bar
+
 @angular/material/grid-list
 
 @angular/material/card

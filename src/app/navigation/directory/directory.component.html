@@ -1,4 +1,5 @@
 <div class="grid-container">
+  <mat-progress-bar *ngIf="!finished" color="warn" mode="indeterminate"></mat-progress-bar>
   <mat-grid-list [cols]="breakpoint" rowHeight="2:2.5" (window:resize)="onResize($event)">
     <mat-grid-tile *ngFor="let card of posts" [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
@@ -23,7 +24,6 @@
   </mat-grid-list>
 </div>
 
-<div *ngIf="!finished">loading...</div>
 <div class="notification is-warning" *ngIf="finished">
   End of contents...
 </div>

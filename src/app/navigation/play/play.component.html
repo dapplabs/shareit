@@ -1,7 +1,7 @@
+<div id="progressBar" [style.width.%]="percent.value"></div>
 <div class="container" id="player-div" *ngIf="loaded" [ngClass]="{'is-seed': this.ended.value }">
   <div id="hero">
     <div id="output">
-      <div id="progressBar" [style.width.%]="percent.value"></div>
       <video id='VideoPlayer' #VideoPlayer controls></video>
     </div>
     <!-- Statistics -->
@@ -9,17 +9,14 @@
       <div>
         <span class="show-leech">Downloading </span>
         <span class="show-seed">Seeding </span>
-        <code></code>
         <span class="show-leech"> from </span>
         <span class="show-seed"> to </span>
-        <code id="numPeers">{{textPeers.value}}</code>.
-      </div>
-      <div>
-        <code id="downloaded">{{downloaded.value}}</code>
-        of <code id="total">{{length.value}}</code>
-        — <span id="remaining">{{remaining.value}}</span><br />
-        &#x2198;<code id="downloadSpeed">{{downloadSpeed.value}}</code>
-        / &#x2197;<code id="uploadSpeed">{{uploadSpeed.value}}</code>
+        <span id="numPeers">{{textPeers.value}}</span>.  
+        <span id="downloaded">{{downloaded.value}}</span>
+        of <span id="total">{{length.value}}</span>
+        — <span id="remaining">{{remaining.value}}</span>  
+        &#x2198;<span id="downloadSpeed">{{downloadSpeed.value}}</span>
+        / &#x2197;<span id="uploadSpeed">{{uploadSpeed.value}}</span>
       </div>
     </div>
   </div>

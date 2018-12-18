@@ -38,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     MatAutocompleteModule,
+    MatIconModule,
     MatBadgeModule,
     ReactiveFormsModule,
     MatBottomSheetModule,
