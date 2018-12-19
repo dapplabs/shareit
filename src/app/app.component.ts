@@ -13,19 +13,19 @@ export class AppComponent {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
     this.matIconRegistry.addSvgIcon(
       'github-circle',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/github-circle.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/github-circle.svg")
     );
     this.matIconRegistry.addSvgIcon(
       'steemit',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/steemit.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/steemit.svg")
     );
     this.matIconRegistry.addSvgIcon(
       'webtorrent',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/webtorrent.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/webtorrent.svg")
     );
     this.matIconRegistry.addSvgIcon(
       'ipfs-icon',
-      this.domSanitizer.bypassSecurityTrustResourceUrl("./../assets/ipfs-logo-vector-ice.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/ipfs-logo-vector-ice.svg")
     );
   }
 }
