@@ -19,7 +19,7 @@ export class DirectoryComponent implements OnInit {
   
   lastPermLink = '';
   lastAuthor = '';
-  finished = false;
+  finished = true;
   
   constructor(private directoryService: DirectoryService, private breakpointObserver: BreakpointObserver, scrollContentService: ScrollService) {
     this.subscription = scrollContentService.scrollAnnounced$.subscribe(
@@ -30,8 +30,10 @@ export class DirectoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.finished = false;
     this.breakpoint = window.innerWidth/350;
     this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
+      this.finished = true;
         this.posts = result.map(function(element){
           return {
             title: element.title,
@@ -54,8 +56,9 @@ export class DirectoryComponent implements OnInit {
   }
   
   private getCards(){
-    if(this.finished) return;
+    this.finished = false;
     this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
+      this.finished = true;
       this.lastAuthor = result[result.length -1].author;
       this.lastPermLink = result[result.length -1].permlink;
       

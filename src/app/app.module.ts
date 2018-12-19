@@ -95,7 +95,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatMenuModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+      { path: '', component: DirectoryComponent },
       { path: 'Home', component: HomeComponent },
       { path: 'Directory', component: DirectoryComponent },
       { path: 'News', component: NewsComponent },
