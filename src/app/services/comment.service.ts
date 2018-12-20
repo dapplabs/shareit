@@ -61,7 +61,7 @@ export class CommentService {
     // alphanumeric characters plus dashes
     permLink = permLink.toLowerCase().replace(/[^a-z0-9-]+/g, "");
 
-    jsonMetadata['tags'].unshift("shareitv0.2");
+    jsonMetadata['tags'].unshift("shareitv0s2");
     jsonMetadata.app = "shareit/0.2";
     jsonMetadata = jsonMetadata || {};
 

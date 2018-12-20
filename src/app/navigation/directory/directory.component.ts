@@ -17,9 +17,9 @@ export class DirectoryComponent implements OnInit {
   breakpoint = 0;
   subscription: Subscription;
   
-  lastPermLink = '';
-  lastAuthor = '';
-  finished = true;
+  lastPermLink: string = "";
+  lastAuthor: string = "";
+  finished: boolean = true;
   
   constructor(private directoryService: DirectoryService, private breakpointObserver: BreakpointObserver, scrollContentService: ScrollService) {
     this.subscription = scrollContentService.scrollAnnounced$.subscribe(
@@ -30,25 +30,7 @@ export class DirectoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.finished = false;
-    this.breakpoint = window.innerWidth/350;
-    this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
-      this.finished = true;
-        this.posts = result.map(function(element){
-          return {
-            title: element.title,
-            body: element.body.split("}}").pop(),
-            permlink: element.permlink,
-            author: element.author,
-            cols: 1,
-            rows: 1,
-            votes: element.net_votes,
-            ipfshash: JSON.parse(element.json_metadata).ipfshash
-          }
-        });
-        console.log(this.posts);
-    });
-    
+    this.getCards();
   }
 
   onResize(event) {
@@ -56,6 +38,7 @@ export class DirectoryComponent implements OnInit {
   }
   
   private getCards(){
+    this.breakpoint = window.innerWidth/350;
     this.finished = false;
     this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
       this.finished = true;
