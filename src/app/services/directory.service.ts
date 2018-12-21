@@ -16,8 +16,9 @@ export class DirectoryService {
     const query = {
       tag: "shareitv0s2",
       limit: Math.round(quantity),
-      start_author: lastAuthor,
-      start_permlink: lastPermLink
+      /*start_author: lastAuthor,
+      start_permlink: lastPermLink*/
+      truncate_body: 255
     };
 
     /*
@@ -34,8 +35,9 @@ export class DirectoryService {
 
     console.log(query);
     return Steem.api.getDiscussionsByCreatedAsync(query).then(res => {
-      console.log(res);
       return res;
+    }).catch((err)=> {
+      console.log("Ocurrió un error al obtener las cards de directory", err);
     });
   }
 }
