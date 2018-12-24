@@ -34,11 +34,11 @@ export class DirectoryComponent implements OnInit {
   }
 
   onResize(event) {
-    this.breakpoint = event.target.innerWidth/350;
+    this.breakpoint = event.target.innerWidth/300;
   }
   
   private getCards(){
-    this.breakpoint = window.innerWidth/350;
+    this.breakpoint = window.innerWidth/300;
     this.finished = false;
     this.directoryService.getPosts(this.breakpoint*3,this.lastPermLink, this.lastAuthor).then((result) => {
       this.finished = true;

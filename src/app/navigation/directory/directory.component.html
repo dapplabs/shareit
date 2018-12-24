@@ -8,18 +8,18 @@
           {{ product.name }}
         </a>-->
         <mat-card-header>
-          <mat-card-title style="text-shadow: 0 2px 0 black;">
+          <mat-card-title class="noselect" style="text-shadow: 0 2px 0 black;">
             {{card.title}}
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div class="show-on-hover hvrbox" style="text-shadow: 0 2px 0 black;">
-            <p>{{card.body}}</p>
+            <p class="noselect">{{card.body}}</p>
           </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button [routerLink]="['/Play', card.author, card.permlink]" style="text-shadow: 0 2px 0 black; background-color: black;">PLAY</button>
-            <button mat-button style="text-shadow: 0 2px 0 black;">LIKE</button>
+            <button mat-button [routerLink]="['/Play', card.author, card.permlink]">PLAY</button>
+            <button mat-button>LIKE</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

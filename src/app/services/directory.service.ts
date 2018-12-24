@@ -16,9 +16,8 @@ export class DirectoryService {
     const query = {
       tag: "shareitv0s2",
       limit: Math.round(quantity),
-      /*start_author: lastAuthor,
-      start_permlink: lastPermLink*/
-      truncate_body: 255
+      start_author: lastAuthor != ""? lastAuthor:null,
+      start_permlink: lastPermLink != ""? lastPermLink:null,
     };
 
     /*

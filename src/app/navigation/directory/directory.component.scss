@@ -107,11 +107,49 @@ mat-card-actions{
   background: 
   linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0)
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.1)
   );
 }
 
 mat-card-content{
   margin-bottom: 0px;
+}
+
+.mat-card>.mat-card-actions:last-child{
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.mat-card-actions{
+  margin-left:0px;
+  margin-right:0px;
+}
+
+.mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child{
+  margin-right:0px;
+  margin-left:0px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.mat-card-header .mat-card-title{
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
+  text-shadow: 0 2px 0 black;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin: 0px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
 }
