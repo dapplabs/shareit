@@ -19,6 +19,12 @@ export class NavigationComponent {
 
   }
 
+  langs: any[] = [
+    {value: 'es', viewValue: 'Spanish'},
+    {value: 'en', viewValue: 'English'},
+    {value: 'it', viewValue: 'Italian'}
+  ];
+
   onScroll() {
     this.scrollContentService.announceScroll('scrolled');
   }

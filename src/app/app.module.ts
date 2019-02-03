@@ -25,6 +25,15 @@ import { PlayComponent } from './navigation/play/play.component';
 import { MatVideoModule } from 'mat-video';
 import { ReactiveFormsModule } from '@angular/forms';
 
+//Translate dependencies
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function translateHttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +46,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     PlayComponent
   ],
   imports: [
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateHttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     MatAutocompleteModule,
     MatIconModule,
     MatBadgeModule,

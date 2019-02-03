@@ -1,35 +1,40 @@
-<form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <input matInput placeholder="Title" formControlName="title">
-  </mat-form-field>
+<section class="container">
+  <form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="Title" formControlName="title">
+      </mat-form-field>
 
-  <mat-form-field>
-    <textarea matInput placeholder="Description" formControlName="body"></textarea>
-  </mat-form-field>
-  
-  <mat-form-field>
-    <input matInput placeholder="file hash" formControlName="hash">
-  </mat-form-field>
+      <mat-form-field class="col-md-12">
+        <textarea matInput placeholder="Description" formControlName="body"></textarea>
+      </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="torrent file hash" formControlName="torrenthash">
-  </mat-form-field>
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="file hash" formControlName="hash">
+      </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="tags" formControlName="tags">
-  </mat-form-field>
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="torrent file hash" formControlName="torrenthash">
+      </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="SAOS01E07 episode SAOS00E07 for ovas" formControlName="seasonepisode">
-  </mat-form-field>
+      <mat-form-field  class="col-md-6 col-xs-12">
+        <input matInput placeholder="tags" formControlName="tags">
+      </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="User name" formControlName="username">
-  </mat-form-field>
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="SAOS01E07 episode SAOS00E07 for ovas" formControlName="seasonepisode">
+      </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="private post key" formControlName="key">
-  </mat-form-field>
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="User name" formControlName="username">
+      </mat-form-field>
 
-  <button type="submit" mat-flat-button [disabled]="!myform.valid" color="primary">Publish</button>
-</form>
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="private post key" formControlName="key">
+      </mat-form-field>
+
+      <button class="col align-self-center" type="submit" mat-flat-button [disabled]="!myform.valid" color="primary">Publish</button>
+    </div>
+
+  </form>
+</section>

@@ -10,7 +10,13 @@
       <a mat-list-item routerLink="/News">News</a>
       <a mat-list-item routerLink="/Upload">Upload</a>
       <a mat-list-item routerLink="/About">About</a>
+      <mat-select mat-list-item placeholder="Languages">
+          <mat-option *ngFor="let lang of langs" [value]="langs.value">
+              {{lang.viewValue}}
+            </mat-option>
+      </mat-select>
     </mat-nav-list>
+    <span class="fill-space"></span>
   </mat-sidenav>
   <mat-sidenav-content infinite-scroll
         [infiniteScrollDistance]="2"
@@ -26,9 +32,8 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ShaReIt</span>
+      <span translate>ApplicationTitle</span>
       <!-- This fills the remaining space of the current row -->
-      <span class="fill-space"></span>
       <button onClick="window.open('https://ipfs.io/')" mat-icon-button color="ascent">
         <mat-icon svgIcon="ipfs-icon"></mat-icon>
       </button>
