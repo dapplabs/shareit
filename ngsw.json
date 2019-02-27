@@ -1,0 +1,95 @@
+{
+  "configVersion": 1,
+  "index": "C:/Program Files/Git/shareit/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "C:/Program Files/Git/shareit/favicon.ico",
+        "C:/Program Files/Git/shareit/index.html",
+        "C:/Program Files/Git/shareit/main.05a91eaafda1f964ece4.js",
+        "C:/Program Files/Git/shareit/polyfills.606e8fb9259b7c2cc431.js",
+        "C:/Program Files/Git/shareit/runtime.b57bf819d5bdce77f1c7.js",
+        "C:/Program Files/Git/shareit/scripts.806effac119676237f10.js",
+        "C:/Program Files/Git/shareit/styles.405bac06665af85ec153.css"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/.*"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "C:/Program Files/Git/shareit/assets/github-circle.svg",
+        "C:/Program Files/Git/shareit/assets/i18n/en.json",
+        "C:/Program Files/Git/shareit/assets/i18n/es.json",
+        "C:/Program Files/Git/shareit/assets/i18n/language-codes-all.json",
+        "C:/Program Files/Git/shareit/assets/i18n/language-codes.json",
+        "C:/Program Files/Git/shareit/assets/icons/icon-128x128.png",
+        "C:/Program Files/Git/shareit/assets/icons/icon-144x144.png",
+        "C:/Program Files/Git/shareit/assets/icons/icon-152x152.png",
+        "C:/Program Files/Git/shareit/assets/icons/icon-192x192.png",
+        "C:/Program Files/Git/shareit/assets/icons/icon-384x384.png",
+        "C:/Program Files/Git/shareit/assets/icons/icon-512x512.png",
+        "C:/Program Files/Git/shareit/assets/icons/icon-72x72.png",
+        "C:/Program Files/Git/shareit/assets/icons/icon-96x96.png",
+        "C:/Program Files/Git/shareit/assets/ipfs-logo-vector-ice.svg",
+        "C:/Program Files/Git/shareit/assets/moment.min.js",
+        "C:/Program Files/Git/shareit/assets/steemit.svg",
+        "C:/Program Files/Git/shareit/assets/webtorrent.min.js",
+        "C:/Program Files/Git/shareit/assets/webtorrent.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "C:/Program Files/Git/shareit/assets/github-circle.svg": "ee58bd52af4b2c26ed6b172de6e10d748a7d9f66",
+    "C:/Program Files/Git/shareit/assets/i18n/en.json": "2a73019e192eed19896d5b577a3a96394476e96f",
+    "C:/Program Files/Git/shareit/assets/i18n/es.json": "5503573892f5b6841b43193d365f1afbfbea4379",
+    "C:/Program Files/Git/shareit/assets/i18n/language-codes-all.json": "57668fb926786f9b2409c2513c976da753fb95af",
+    "C:/Program Files/Git/shareit/assets/i18n/language-codes.json": "a0fe9c24a66cd367a7044055b884700a5f77076a",
+    "C:/Program Files/Git/shareit/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "C:/Program Files/Git/shareit/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "C:/Program Files/Git/shareit/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "C:/Program Files/Git/shareit/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "C:/Program Files/Git/shareit/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "C:/Program Files/Git/shareit/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "C:/Program Files/Git/shareit/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "C:/Program Files/Git/shareit/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "C:/Program Files/Git/shareit/assets/ipfs-logo-vector-ice.svg": "93ad8b19f28976f3f38c5dc7a01a5558f8630a34",
+    "C:/Program Files/Git/shareit/assets/moment.min.js": "2f16cfc2322857ff09d5d477024a1439e898c954",
+    "C:/Program Files/Git/shareit/assets/steemit.svg": "141c02e1249ff437e014db370d45cfad07400ac8",
+    "C:/Program Files/Git/shareit/assets/webtorrent.min.js": "87a89747125cc799341f579ba2f69adc5585cd53",
+    "C:/Program Files/Git/shareit/assets/webtorrent.svg": "71b80ed5db26760d530357564590233c19b61c12",
+    "C:/Program Files/Git/shareit/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "C:/Program Files/Git/shareit/index.html": "a4abc924890b64873c647e56889a5290a29c477f",
+    "C:/Program Files/Git/shareit/main.05a91eaafda1f964ece4.js": "2851ad2fca3e166c83c2a4286e881ebbf55333a2",
+    "C:/Program Files/Git/shareit/polyfills.606e8fb9259b7c2cc431.js": "b6abbc1fcbc93a5a73be33ec79c352f6f49498b4",
+    "C:/Program Files/Git/shareit/runtime.b57bf819d5bdce77f1c7.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "C:/Program Files/Git/shareit/scripts.806effac119676237f10.js": "64578ccea55716fff16cb37502889712b619e46e",
+    "C:/Program Files/Git/shareit/styles.405bac06665af85ec153.css": "a4e36646ab8916ceca13bf4e392e7469c7f85483"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
