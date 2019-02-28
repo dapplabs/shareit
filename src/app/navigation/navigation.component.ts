@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ScrollService } from 'src/app/services/scroll.service';
+import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 
 @Component({
   selector: 'app-navigation',
@@ -15,9 +16,15 @@ export class NavigationComponent {
       map(result => result.matches)
     );
     
-  constructor(private breakpointObserver: BreakpointObserver, private scrollContentService: ScrollService) {
+  constructor(private translate: TranslateService, private breakpointObserver: BreakpointObserver, private scrollContentService: ScrollService) {
+        // this language will be used as a fallback when a translation isn't found in the current language
+        translate.setDefaultLang('en');
 
+         // the lang to use, if the lang isn't available, it will use the current loader to get them
+        translate.use('en');
   }
+
+  selected = 'en';
 
   langs: any[] = [
     {value: 'es', viewValue: 'Spanish'},
@@ -26,7 +33,7 @@ export class NavigationComponent {
   ];
 
   changeLanguage(lang: any){
-    console.log(lang.value);
+    this.translate.use(lang.value);
   }
 
   onScroll() {
