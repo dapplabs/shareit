@@ -9,11 +9,11 @@
       "urls": [
         "/shareit/favicon.ico",
         "/shareit/index.html",
-        "/shareit/main.5c06c4fe02d64e3c5d13.js",
-        "/shareit/polyfills.606e8fb9259b7c2cc431.js",
-        "/shareit/runtime.b57bf819d5bdce77f1c7.js",
+        "/shareit/main.14b615424b5037acded5.js",
+        "/shareit/polyfills.9a31e94b4a70a8fb63d0.js",
+        "/shareit/runtime.a5dd35324ddfd942bef1.js",
         "/shareit/scripts.806effac119676237f10.js",
-        "/shareit/styles.405bac06665af85ec153.css"
+        "/shareit/styles.04aa715d1d7925aec341.css"
       ],
       "patterns": [
         "https:\\/\\/fonts\\.googleapis\\.com\\/.*"
@@ -67,12 +67,12 @@
     "/shareit/assets/webtorrent.min.js": "cc726e58a454fe23128399944094f727b49fb0b3",
     "/shareit/assets/webtorrent.svg": "71b80ed5db26760d530357564590233c19b61c12",
     "/shareit/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/shareit/index.html": "7af75cf8468f35eb51040971f9e10bdee2985940",
-    "/shareit/main.5c06c4fe02d64e3c5d13.js": "e44bb18b94bcfb306f8da970044df6c5353fba9a",
-    "/shareit/polyfills.606e8fb9259b7c2cc431.js": "b6abbc1fcbc93a5a73be33ec79c352f6f49498b4",
-    "/shareit/runtime.b57bf819d5bdce77f1c7.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "/shareit/index.html": "9b59f10edaf0cdf9483392a3d0a18e7ac5321b90",
+    "/shareit/main.14b615424b5037acded5.js": "9bb0cf873d6ec2534d5494af03283b36aca3e948",
+    "/shareit/polyfills.9a31e94b4a70a8fb63d0.js": "ad06e7ca06b60b0bbac03ed6b1b4fc6b2c0bfabb",
+    "/shareit/runtime.a5dd35324ddfd942bef1.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
     "/shareit/scripts.806effac119676237f10.js": "64578ccea55716fff16cb37502889712b619e46e",
-    "/shareit/styles.405bac06665af85ec153.css": "a4e36646ab8916ceca13bf4e392e7469c7f85483"
+    "/shareit/styles.04aa715d1d7925aec341.css": "e7b04a92c832d516f8abc662f0a7a679d5b1e0f3"
   },
   "navigationUrls": [
     {
