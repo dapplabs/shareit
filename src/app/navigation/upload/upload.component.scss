@@ -1,0 +1,214 @@
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+  
+form > * {
+  padding: 1em;
+}
+
+.file-select-button, .file-name {
+  display: inline-block;
+  margin: 8px;
+}
+
+
+//check tick
+// Colors
+$green: #7ac142;
+$white: #fff;
+
+// Misc
+$curve: cubic-bezier(0.650, 0.000, 0.450, 1.000);
+
+.checkmark {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 4;
+  stroke: $white;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px $green;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  stroke: $green;
+  fill: none;
+  animation: stroke .6s $curve forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke .3s $curve .8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px $green;
+  }
+}
+
+h1{
+  text-align: center;
+}
+
+//alert
+.alert {
+  text-align: left;
+  min-width: 150px;
+  padding: 15px;
+  margin: 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  @extend .shadow-1;
+  &:hover{
+    @extend .shadow-2;
+  }
+  &-success{
+    background-color: lighten(#5cb85c, 15%);
+    border-color: lighten(#5cb85c, 10%);
+    color: darken(#5cb85c, 15%);
+  }
+  &-warning{
+    background-color: lighten(#E2A41F, 15%);
+    border-color: lighten(#E2A41F, 10%);
+    color: darken(black, 15%);
+  }
+  &-normal{
+    background-color: lighten(#303030, 15%);
+    border-color: lighten(grey, 10%);
+    color: darken(white, 15%);
+  }
+  &-danger{
+    background-color: lighten(#d43f3a, 15%);
+    border-color: lighten(#d43f3a, 10%);
+    color: darken(#d43f3a, 15%);
+  }
+  p{
+    padding: 0;
+    margin: 0;
+  }
+  i{
+    padding-right: 5px;
+    vertical-align: middle;
+    font-size: 24px;
+  }
+  .close-alert{
+    -webkit-appearance: none;
+    position: relative;
+    float: right;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    background: 0 0;
+    font-size: 21px;
+    line-height: 1;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    filter: alpha(opacity=40);
+    opacity: .4;
+    &:hover{
+      filter: alpha(opacity=70);
+      opacity: .7;
+    }
+  }
+}
+
+.shadow-1{
+  box-shadow: 0 1px 3px rgba(white, .12), 0 1px 2px rgba(white, .24) ;
+}
+.shadow-2{
+  box-shadow: 0 3px 6px rgba(white, .16), 0 3px 6px rgba(white, .23) ;
+}
+
+
+
+.status{
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  min-width: 15px;
+  min-height: 15px;
+  display: inline-block;
+}
+
+.processing{
+  background: deepskyblue;
+}
+.uploading{
+  background: gold;
+}
+.error{
+  background: red;
+}
+.uploaded{
+  background: greenyellow;
+}
+
+
+.processing {
+  animation-name: parpadeo;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name:parpadeo;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.uploading {
+  animation-name: parpadeo;
+  animation-duration: .25s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name:parpadeo;
+  -webkit-animation-duration: .25s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo{  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes parpadeo {  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+   100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo {  
+  0% { opacity: 1.0; }
+   50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}

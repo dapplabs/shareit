@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "styles-variables";
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.progressBar {
+    height: 5px;
+    width: 0%;
+    background-color: #35b44f;
+    transition: width .4s ease-in-out;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    z-index: 10;
+}
+
+@media (max-width: 599px){
+    .progressBar {
+        top: 56px;
+    }
+}

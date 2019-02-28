@@ -1,0 +1,85 @@
+<div class="progressBar" [style.width.%]="progress"></div>
+<section class="container" style="text-align: center;">
+  <div class="alert alert-warning" role="alert">
+    <i class="material-icons">info</i>
+    Remember to upload 1 mp4 file and x number subtitles, all at the same time.
+  </div>
+  <div class="alert alert-warning" role="alert">
+    <i class="material-icons">info</i>
+    Subtitle formats: {{subformats}}
+  </div>
+</section>
+<section *ngIf="submitted" class="container">
+  <div class="row">
+    <svg class="col-md-12" class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+      <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+    </svg>
+    <button class="col-md-12" mat-flat-button color="warn" (click)="submitted = false">Upload more</button>
+  </div>
+</section>
+<section *ngIf="!submitted" class="container">
+  <form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="Title" formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-12">
+        <textarea matInput placeholder="Description" formControlName="body"></textarea>
+      </mat-form-field>
+
+      <div class="col-xl-12">
+        <div class="status" *ngFor="let item of filesstatus" [ngClass]="item"></div>
+      </div>
+
+      <input *ngIf="!hash.valid && !torrenthash.valid" class="col-md-12" multiple #file type="file" (change)="upload(file.files)"
+      />
+
+      <mat-form-field *ngIf="hash.valid" class="col-md-6 col-xs-12">
+        <input matInput placeholder="file hash" formControlName="hash">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="torrenthash.valid" class="col-md-6 col-xs-12">
+        <input matInput placeholder="torrent file hash" formControlName="torrenthash">
+      </mat-form-field>
+
+      <form style="padding: 0px;" class="col-md-12 col-xs-12" [formGroup]="subForm">
+        <div style="padding: 0px;" formArrayName="sub_titles">
+          <div style="padding: 0px;" *ngFor="let item of subtitles.controls; let pointIndex=index" [formGroupName]="pointIndex">
+            <div class="alert alert-normal" role="alert">
+              <button type="button" class="close-alert" (click)="removeItem(i)">×</button>
+              <mat-form-field class="col-xs-12 col-md-6">
+                <input matInput placeholder="File name" formControlName="fileName">
+              </mat-form-field>
+              <mat-form-field class="col-xs-12 col-md-6">
+                <mat-select formControlName="language" required>
+                  <mat-option *ngFor="let lang of languagecodes" [value]="lang.code">{{lang.language}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="tags" formControlName="tags">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="SAOS01E15" formControlName="seasonepisode">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="Steemit user name" formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6 col-xs-12">
+        <input matInput placeholder="private post key" formControlName="key">
+      </mat-form-field>
+
+      <button class="col-md-6 col-xs-12 align-self-center" type="submit" mat-flat-button [disabled]="!myform.valid" color="primary">Publish</button>
+      <button class="col-md-6 col-xs-12 align-self-center" mat-flat-button color="accent" (click)="clearForm()">Clear</button>
+    </div>
+  </form>
+</section>

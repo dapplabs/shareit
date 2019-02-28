@@ -1,0 +1,36 @@
+<div class="grid-container">
+  <mat-progress-bar *ngIf="!finished" color="warn" mode="indeterminate"></mat-progress-bar>
+  <mat-grid-list [cols]="breakpoint" rowHeight="2:2.5" (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let card of posts" [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card" style="background-image: url('https://i.ebayimg.com/images/g/kZ8AAOSwWotbwxny/s-l1600.jpg')">
+          <!--<a *ngFor="let product of products"
+          [routerLink]="['/product-details', product.id]">
+          {{ product.name }}
+        </a>-->
+        <mat-card-header>
+          <mat-card-title class="noselect" style="text-shadow: 0 2px 0 black;">
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div class="show-on-hover hvrbox" style="text-shadow: 0 2px 0 black;">
+            <p class="noselect">{{card.body}}</p>
+          </div>
+        </mat-card-content>
+        
+        <mat-card-actions>
+            <mat-chip-list>
+                <mat-chip color="warn" selected>{{card.season}}</mat-chip>
+                <mat-chip color="warn" selected>{{card.episode}}</mat-chip>
+              </mat-chip-list>
+            <button mat-button [routerLink]="['/Play', card.author, card.permlink]">PLAY</button>
+            <button mat-button>LIKE</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<!--<div class="notification is-warning" *ngIf="finished">
+  End of contents...
+</div>-->

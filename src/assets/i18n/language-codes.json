@@ -1,0 +1,38 @@
+[
+    {
+        "code": "en",
+        "language": "English"
+    },
+    {
+        "code": "en-us",
+        "language": "English (United States)"
+    },
+    {
+        "code": "it",
+        "language": "Italian (Standard)"
+    },
+    {
+        "code": "ru",
+        "language": "Russian"
+    },
+    {
+        "code": "pt-br",
+        "language": "Portuguese (Brazil)"
+    },
+    {
+        "code": "es",
+        "language": "Spanish"
+    },
+    {
+        "code": "es-ar",
+        "language": "Spanish (Argentina)"
+    },
+    {
+        "code": "es-mx",
+        "language": "Spanish (Mexico)"
+    },
+    {
+        "code": "ar",
+        "language": "Arabic (Standard)"
+    }
+]

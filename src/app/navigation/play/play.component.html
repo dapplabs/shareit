@@ -1,0 +1,72 @@
+<div class="progressBar" [style.width.%]="percent.value"></div>
+<div class="container" id="player-div" *ngIf="loaded" [ngClass]="{'is-seed': this.ended.value }">
+  <div id="hero">
+    <div id="output">
+      <video id='VideoPlayer' #VideoPlayer controls>
+          <track *ngFor="let sub of post.subtitles" [label]="sub.lang" kind="subtitles" [srclang]="sub.lang" [src]="sub.archive" default>
+      </video>
+    </div>
+    <!-- Statistics -->
+    <div id="status">
+      <div>
+        <span class="show-leech">Downloading </span>
+        <span class="show-seed">Seeding </span>
+        <span class="show-leech"> from </span>
+        <span class="show-seed"> to </span>
+        <span id="numPeers">{{textPeers.value}}</span>.  
+        <span id="downloaded">{{downloaded.value}}</span>
+        of <span id="total">{{length.value}}</span>
+        — <span id="remaining">{{remaining.value}}</span>  
+        &#x2198;<span id="downloadSpeed">{{downloadSpeed.value}}</span>
+        / &#x2197;<span id="uploadSpeed">{{uploadSpeed.value}}</span>
+      </div>
+    </div>
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar [src]="'https://steemitimages.com/u/' + post.author + '/avatar'">
+      <mat-card-title>
+        <span>{{post.title}}</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{post.seasonepisode}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{post.body}}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of post.tags">
+          {{tag}}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card-footer>
+  </mat-card>
+
+  <mat-card *ngFor="let reply of replies">
+    <mat-card-header>
+      <img mat-card-avatar [src]="'https://steemitimages.com/u/' + reply.author + '/avatar'">
+      <mat-card-title>
+        <span>{{reply.author}}</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{reply.title}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{reply.body}}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of reply.tags">
+          {{tag}}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+<div *ngIf="!loaded">
+  Loading...
+</div>
