@@ -1,5 +1,5 @@
 # Shareit [![CircleCI](https://circleci.com/gh/dapplabs/shareit.svg?style=svg)](https://circleci.com/gh/dapplabs/shareit)
-## WebPage: https://marce1994.github.io/MyPWA
+## WebPage: https://dapplabs.github.io/shareit/
 
 ## Decentralized content sharing application.
 
