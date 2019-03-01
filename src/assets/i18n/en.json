@@ -10,6 +10,12 @@
             "ABOUT":"Sobre nosotros"
         }
     },
+    "UPLOAD": {
+        "FORM":{
+            "SELECTFILE": "Select a file...",
+            "SELECTSUBTITLES": "Select subtitles..."
+        }
+    },
     "WelcomeMessage": "Welcome to the international demo application",
     "UploadFormTitle": "Title"
 }

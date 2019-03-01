@@ -99,9 +99,9 @@ h1{
     color: darken(black, 15%);
   }
   &-normal{
-    background-color: lighten(#303030, 15%);
-    border-color: lighten(grey, 10%);
-    color: darken(white, 15%);
+    background-color: #3b3b3b;
+    border-color: #5b5b5b;
+    color: #c5bcbc;
   }
   &-danger{
     background-color: lighten(#d43f3a, 15%);

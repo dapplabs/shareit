@@ -1,14 +1,4 @@
-<div class="progressBar" [style.width.%]="progress"></div>
-<section class="container" style="text-align: center;">
-  <div class="alert alert-warning" role="alert">
-    <i class="material-icons">info</i>
-    Remember to upload 1 mp4 file and x number subtitles, all at the same time.
-  </div>
-  <div class="alert alert-warning" role="alert">
-    <i class="material-icons">info</i>
-    Subtitle formats: {{subformats}}
-  </div>
-</section>
+<mat-progress-bar *ngIf="generalProgress" class="progressBar" mode="determinate" [value]="generalProgress"></mat-progress-bar>
 <section *ngIf="submitted" class="container">
   <div class="row">
     <svg class="col-md-12" class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
@@ -28,21 +18,35 @@
       <mat-form-field class="col-md-12">
         <textarea matInput placeholder="Description" formControlName="body"></textarea>
       </mat-form-field>
-
+      
       <div class="col-xl-12">
         <div class="status" *ngFor="let item of filesstatus" [ngClass]="item"></div>
       </div>
+      
+      <!--Upload video input-->
+      <div class="col-xs-12 col-md-6 mat-form-field-wrapper">
+        <input [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" style="display:none" id="input-file-id" #file type="file" accept=".mp4" (change)="uploadFile(file.files)" />
+        <label [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" for="input-file-id" class="col-xl-12 mat-button mat-raised-button mat-primary">
+          <span translate>UPLOAD.FORM.SELECTFILE</span>
+        </label>
+      </div>
 
-      <input *ngIf="!hash.valid && !torrenthash.valid" class="col-md-12" multiple #file type="file" (change)="upload(file.files)"
-      />
+      <!--Upload subtitles input-->
+      <div class="col-xs-12 col-md-6 mat-form-field-wrapper">
+        <input style="display:none" id="input-file-subtitles" #subinput multiple type="file" [accept]="subtitleFileFormatsExtensions" (change)="uploadSubtitles(subinput.files)"/>
+        <label for="input-file-subtitles" class="col-xl-12 mat-button mat-raised-button mat-primary">
+          <span translate>UPLOAD.FORM.SELECTSUBTITLES</span>
+        </label>
+      </div>
 
+      <!--Principal file hashes-->
       <mat-form-field *ngIf="hash.valid" class="col-md-6 col-xs-12">
         <input matInput placeholder="file hash" formControlName="hash">
       </mat-form-field>
-
       <mat-form-field *ngIf="torrenthash.valid" class="col-md-6 col-xs-12">
         <input matInput placeholder="torrent file hash" formControlName="torrenthash">
       </mat-form-field>
+      <!--+++++++++++++++++++++-->
 
       <form style="padding: 0px;" class="col-md-12 col-xs-12" [formGroup]="subForm">
         <div style="padding: 0px;" formArrayName="sub_titles">
