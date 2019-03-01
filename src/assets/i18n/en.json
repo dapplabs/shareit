@@ -1,5 +1,21 @@
 {
-    "Title": "Translation demo",
+    "NAVIGATION":{
+        "APPLICATION_NAME": "ShareIt",
+        "MENU":{
+            "MENU": "Menu",
+            "HOME":"Home",
+            "DIRECTORY":"Directorio",
+            "NEWS":"Noticias",
+            "UPLOAD":"Subir",
+            "ABOUT":"Sobre nosotros"
+        }
+    },
+    "UPLOAD": {
+        "FORM":{
+            "SELECTFILE": "Select a file...",
+            "SELECTSUBTITLES": "Select subtitles..."
+        }
+    },
     "WelcomeMessage": "Welcome to the international demo application",
     "UploadFormTitle": "Title"
 }

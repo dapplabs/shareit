@@ -15,28 +15,44 @@ declare const WebTorrent: any;
   styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent implements OnInit {
-  subformats: Array<string> = [];
   submitted: boolean = false;
 
   myform: FormGroup;
   subForm: FormGroup;
 
+  statusFiles = {
+    fileStatus: {},
+    uploadedSize: {},
+    totalSize: {}
+  };
+
+  get generalProgress() {
+    var total = (Object.values(this.statusFiles['totalSize']) as Array<number>).reduce(function (a, b) { return a + b; }, 0);
+    var uploaded = (Object.values(this.statusFiles['uploadedSize']) as Array<number>).reduce(function (a, b) { return a + b; }, 0);
+    return Math.round(100 * uploaded / total);
+  }
+
   get subtitles(): FormArray {
     return <FormArray>this.subForm.get('sub_titles');
   }
 
-  languagecodes: Array<{ code: string, language: string }> = json;
+  get subtitleFileFormatsExtensions(): Array<string> {
+    return subsrt.list().map(x => '.' + x);
+  }
 
-  public progress: number = 0;
-  public totalSize: any = {};
-  public uploadedSize: any = {};
-  public fileStatus: any = {};
+  get subtitleFileFormats(): Array<string> {
+    return subsrt.list();
+  }
 
   get filesstatus(): Array<string> {
-    return (Object.values(this.fileStatus) as Array<string>)
+    if (this.statusFiles['fileStatus'])
+      return (Object.values(this.statusFiles['fileStatus']) as Array<string>);
+    else
+      return new Array<string>();
   }
-  public files = null;
-  public filesKeys = null;
+
+  languagecodes: Array<{ code: string, language: string }> = json;
+
   webtorrent: any = {};
 
   title: FormControl;
@@ -50,18 +66,13 @@ export class UploadComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private commentService: CommentService, private accountService: AccountService, private http: HttpClient, private changeDetectorRef: ChangeDetectorRef) {
     this.webtorrent = new WebTorrent();
-    this.subformats = subsrt.list();
-    setInterval(() => {
-      // require view to be updated
-      this.changeDetectorRef.markForCheck();
-    }, 500);
+    setInterval(() => { this.changeDetectorRef.markForCheck(); }, 1000);
   }
 
   ngOnInit() {
     this.subForm = this.formBuilder.group({
       sub_titles: this.formBuilder.array([])
     });
-
     this.createFormControls();
     this.createForm();
   }
@@ -100,6 +111,11 @@ export class UploadComponent implements OnInit {
     this.myform.reset();
     const subtitles = this.subForm.get('sub_titles') as FormArray;
     this.webtorrent = new WebTorrent();
+    this.statusFiles = {
+      fileStatus: {},
+      uploadedSize: {},
+      totalSize: {}
+    };
     while (subtitles.length !== 0) {
       subtitles.removeAt(0);
     }
@@ -160,87 +176,19 @@ export class UploadComponent implements OnInit {
 
   addItem(filename: string, hash: string): void {
     this.subtitles.push(this.createItem(filename, hash));
+    console.log(this.subtitles);
   }
 
-  upload(files) {
+  uploadSubtitles(files) {
     if (files.length === 0)
       return;
-
     var arrayFiles = Array.from(files as Array<File>);
-
-    if (arrayFiles.filter(x => (x as File).name.includes(".mp4")).length == 0) {
-      alert("No mp4 files detexted");
-      return;
-    }
-
-    if (arrayFiles.filter(x => (x as File).name.includes(".mp4")).length > 1) {
-      alert("Just 1 file per post it's allowed");
-      return;
-    }
-
-    for (let index = 0; index < arrayFiles.length; index++) {
-      this.totalSize[arrayFiles[index].name] = arrayFiles[index].size;
-      this.uploadedSize[arrayFiles[index].name] = 0;
-    }
-
     var self = this;
-
-    //Upload mp4 files...
-    var videoFiles = arrayFiles.filter(x => (x as File).name.includes(".mp4"));
-    for (let index = 0; index < videoFiles.length; index++) {
-      self.fileStatus[videoFiles[index].name] = "processing";
-      this.webtorrent.on('error', err => {
-        self.fileStatus[videoFiles[index].name] = "error";
-      })
-      this.webtorrent.seed(videoFiles[index], function (torrent) {
-        torrent.on('error', err => {
-          self.fileStatus[videoFiles[index].name] = "error";
-        })
-        var torrentFile = new Blob([new Uint8Array(torrent.torrentFile)]);
-        
-        const formData = new FormData();
-
-        formData.append(videoFiles[index].name, videoFiles[index]);
-        formData.append(videoFiles[index].name + '.torrent', self.blobToFile(torrentFile, videoFiles[index].name + '.torrent'), videoFiles[index].name + '.torrent');
-        const uploadReq = new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`, formData, {
-          reportProgress: true,
-        });
-        self.totalSize[videoFiles[index].name] = videoFiles[index].size;
-        self.http.request(uploadReq).subscribe(event => {
-          if (event.type === HttpEventType.UploadProgress) {
-            self.uploadedSize[videoFiles[index].name] = event.loaded;
-            self.fileStatus[videoFiles[index].name] = "uploading";
-
-            var total = (Object.values(self.totalSize) as Array<number>).reduce(function (a, b) { return a + b; }, 0);
-            var uploaded = (Object.values(self.uploadedSize) as Array<number>).reduce(function (a, b) { return a + b; }, 0);
-            self.progress = Math.round(100 * uploaded / total);
-
-            console.log(self.progress);
-          }
-          else if (event.type === HttpEventType.Response) {
-            if(!event.ok){
-              self.fileStatus[videoFiles[index].name] = "error";
-            }
-
-            self.fileStatus[videoFiles[index].name] = "uploaded";
-
-            self.hash.setValue(event.body[Object.keys(event.body)[0]]);
-            self.torrenthash.setValue(event.body[Object.keys(event.body)[1]]);
-
-            self.files = Object.assign({}, self.files, event.body);
-            self.filesKeys = Object.keys(self.files);
-          }
-        });
-      })
-    }
-
     //Upload subtitles...
     var subtitleFiles = [];
     arrayFiles.forEach(element => {
       var extension = element.name.split('.').pop();
-      console.log(extension);
-      console.log(extension, subsrt.list(), subsrt.list().includes(extension));
-      if (subsrt.list().includes(extension)) {
+      if (this.subtitleFileFormats.includes(extension)) {
         var ready = false;
         var result;
         var check = function () {
@@ -248,7 +196,9 @@ export class UploadComponent implements OnInit {
             var parsed = subsrt.convert(result, { format: 'vtt' });
             var blob = new Blob([parsed]);
             var file = self.blobToFile(blob, element.name.replace('.' + extension, '.vtt'));
-            self.fileStatus[file.name] = "processing";
+
+            self.statusFiles['fileStatus'][file.name] = "processing";
+
             subtitleFiles.push(file);
             self.uploadSubtitle(file);
             return;
@@ -266,38 +216,83 @@ export class UploadComponent implements OnInit {
       }
     });
   }
-  
+
+  uploadFile(files) {
+    if (files.length === 0)
+      return;
+    var self = this;
+    var arrayFiles = Array.from(files as Array<File>);
+    arrayFiles.forEach(file => {
+      self.addFileToFileStatus(file);
+      this.webtorrent.seed(file, function (torrent) {
+        var torrentFileBlob = new Blob([new Uint8Array(torrent.torrentFile)]);
+        var torrentFile = self.blobToFile(torrentFileBlob, file.name + '.torrent');
+        const formData = new FormData();
+        formData.append(file.name, file);
+        formData.append(file.name + '.torrent', torrentFile, file.name + '.torrent');
+
+        self.http.request(
+          new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`,
+            formData,
+            { reportProgress: true })
+        ).subscribe(event => {
+          switch (event.type) {
+            case HttpEventType.UploadProgress:
+              self.updateFileUploadStatus(file, event);
+              break;
+            case HttpEventType.Response:
+              self.updateFileUploadStatus(file, event);
+              self.hash.setValue(event.body[Object.keys(event.body)[0]]);
+              self.torrenthash.setValue(event.body[Object.keys(event.body)[1]]);
+              break;
+            default:
+              console.log(HttpEventType[event.type]);
+              break;
+          }
+        });
+      });
+    });
+  }
+
+  updateFileUploadStatus(file: File, event) {
+    this.statusFiles['uploadedSize'][file.name] = event.loaded;
+    if (event.type === HttpEventType.UploadProgress)
+      this.statusFiles['fileStatus'][file.name] = "uploading";
+    if (event.type === HttpEventType.Response) {
+      this.statusFiles['fileStatus'][file.name] = event.ok ? "uploaded" : "error";
+    }
+  }
+
+  addFileToFileStatus(file: File) {
+    this.statusFiles['fileStatus'][file.name] = "processing";
+    this.statusFiles['totalSize'][file.name] = file.size;
+    this.statusFiles['uploadedSize'][file.name] = 0;
+  }
+
   public uploadSubtitle(file: File) {
     var self = this;
     const formData = new FormData();
 
+    this.addFileToFileStatus(file);
+
     formData.append(file.name, file, file.name);
-    const uploadReq = new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`, formData, {
-      reportProgress: true,
-    });
-    self.totalSize[file.name] = file.size;
-    self.http.request(uploadReq).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        self.fileStatus[file.name] = "uploading";
-        self.uploadedSize[file.name] = event.loaded;
 
-        var total = (Object.values(self.totalSize) as Array<number>).reduce(function (a, b) { return a + b; }, 0);
-        var uploaded = (Object.values(self.uploadedSize) as Array<number>).reduce(function (a, b) { return a + b; }, 0);
-        self.progress = Math.round(100 * uploaded / total);
-
-        console.log(self.progress);
-      }
-      else if (event.type === HttpEventType.Response) {
-        if(!event.ok){
-          self.fileStatus[file.name] = "error";
-        }
-
-        self.fileStatus[file.name] = "uploaded";
-
-        self.addItem(Object.keys(event.body)[0], event.body[Object.keys(event.body)[0]]);
-
-        self.files = Object.assign({}, self.files, event.body);
-        self.filesKeys = Object.keys(self.files);
+    self.http.request(
+      new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`,
+        formData,
+        { reportProgress: true })
+    ).subscribe(event => {
+      switch (event.type) {
+        case HttpEventType.UploadProgress:
+          self.updateFileUploadStatus(file, event);
+          break;
+        case HttpEventType.Response:
+          self.updateFileUploadStatus(file, event);
+          self.addItem(Object.keys(event.body)[0], event.body[Object.keys(event.body)[0]]);
+          break;
+        default:
+          console.log(HttpEventType[event.type]);
+          break;
       }
     });
   }

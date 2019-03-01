@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'ShaReIt';
   constructor(private translateService: TranslateService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
     translateService.setDefaultLang('en');
-
+    translateService.use('en');
     this.matIconRegistry.addSvgIcon(
       'github-circle',
       this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/github-circle.svg")

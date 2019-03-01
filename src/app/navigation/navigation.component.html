@@ -1,21 +1,19 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'push' : 'side'" [opened]="!(isHandset$ | async)">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar><span translate>NAVIGATION.MENU.MENU</span></mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/Home">Home</a>
-      <a mat-list-item routerLink="/Directory">Directory</a>
-      <a mat-list-item routerLink="/News">News</a>
-      <a mat-list-item routerLink="/Upload">Upload</a>
-      <a mat-list-item routerLink="/About">About</a>
-      <span class="fill-space"></span>
-
-      <!--<mat-select (change)="changeLanguage()">
+      <a mat-list-item routerLink="/Home"><span translate>NAVIGATION.MENU.HOME</span></a>
+      <a mat-list-item routerLink="/Directory" translate><span translate="NAVIGATION.MENU.DIRECTORY"></span></a>
+      <a mat-list-item routerLink="/News"><span translate>NAVIGATION.MENU.NEWS</span></a>
+      <a mat-list-item routerLink="/Upload"><span translate>NAVIGATION.MENU.UPLOAD</span></a>
+      <a mat-list-item routerLink="/About"><span translate>NAVIGATION.MENU.ABOUT</span></a>
+      <br><br>
+      <mat-select [(value)]="selected">
         <mat-option *ngFor="let lang of langs" [value]="lang.value" (onSelectionChange)="changeLanguage(lang)">
           {{lang.viewValue}}
         </mat-option>
-      </mat-select>-->
-
+      </mat-select>
     </mat-nav-list>
     <span class="fill-space"></span>
   </mat-sidenav>
@@ -25,7 +23,7 @@
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span translate>ApplicationTitle</span>
+      <span translate>NAVIGATION.APPLICATION_NAME</span>
       <!-- This fills the remaining space of the current row -->
       <span class="fill-space"></span>
       <div style="overflow: auto">
@@ -38,7 +36,7 @@
         <button onClick="window.open('https://steemit.com/')" mat-icon-button color="ascent">
           <mat-icon svgIcon="steemit"></mat-icon>
         </button>
-        <button onClick="window.open('https://github.com/marce1994/MyPWA')" mat-icon-button color="ascent">
+        <button onClick="window.open('https://github.com/dapplabs/shareit')" mat-icon-button color="ascent">
           <mat-icon svgIcon="github-circle"></mat-icon>
         </button>
       </div>
