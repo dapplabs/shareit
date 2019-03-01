@@ -1,4 +1,15 @@
 {
-    "ApplicationTitle": "ShaReIt Network",
-    "WelcomeMessage": "Bienvenido a la aplicación"
+    "NAVIGATION":{
+        "APPLICATION_NAME": "ShareIt",
+        "MENU":{
+            "MENU": "Menu",
+            "HOME":"Home",
+            "DIRECTORY":"Directory",
+            "NEWS":"News",
+            "UPLOAD":"Upload",
+            "ABOUT":"About"
+        }
+    },
+    "WelcomeMessage": "Welcome to the international demo application",
+    "UploadFormTitle": "Title"
 }
