@@ -1,14 +1,34 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'push' : 'side'" [opened]="!(isHandset$ | async)">
-    <mat-toolbar><span translate>NAVIGATION.MENU.MENU</span></mat-toolbar>
+    <mat-toolbar>
+      <span translate>NAVIGATION.MENU.MENU</span>
+    </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/Home"><span translate>NAVIGATION.MENU.HOME</span></a>
-      <a mat-list-item routerLink="/Directory" translate><span translate="NAVIGATION.MENU.DIRECTORY"></span></a>
-      <a mat-list-item routerLink="/News"><span translate>NAVIGATION.MENU.NEWS</span></a>
-      <a mat-list-item routerLink="/Upload"><span translate>NAVIGATION.MENU.UPLOAD</span></a>
-      <a mat-list-item routerLink="/About"><span translate>NAVIGATION.MENU.ABOUT</span></a>
-      <br><br>
+      <a mat-list-item routerLink="/Home">
+        <mat-icon>home</mat-icon>
+        <span class="menu-item" translate>
+          NAVIGATION.MENU.HOME
+        </span>
+      </a>
+      <a mat-list-item routerLink="/Directory" translate>
+        <mat-icon>dashboard</mat-icon>
+        <span class="menu-item" translate="NAVIGATION.MENU.DIRECTORY"></span>
+      </a>
+      <a mat-list-item routerLink="/News">
+        <mat-icon>rss_feed</mat-icon>
+        <span class="menu-item" translate>NAVIGATION.MENU.NEWS</span>
+      </a>
+      <a mat-list-item routerLink="/Upload">
+        <mat-icon>cloud_upload</mat-icon>
+        <span class="menu-item" translate>NAVIGATION.MENU.UPLOAD</span>
+      </a>
+      <a mat-list-item routerLink="/About">
+        <mat-icon>help</mat-icon>
+        <span class="menu-item" translate>NAVIGATION.MENU.ABOUT</span>
+      </a>
+      <br>
+      <br>
       <mat-select [(value)]="selected">
         <mat-option *ngFor="let lang of langs" [value]="lang.value" (onSelectionChange)="changeLanguage(lang)">
           {{lang.viewValue}}

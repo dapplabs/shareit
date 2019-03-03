@@ -13,9 +13,18 @@
     "UPLOAD": {
         "FORM":{
             "SELECTFILE": "Select a file...",
-            "SELECTSUBTITLES": "Select subtitles..."
+            "SELECTSUBTITLES": "Select subtitles...",
+            "SELECTPORTADA": "Select cover image...",
+            "TAGS":"Tags",
+            "TITLE":"Tittle",
+            "DESCRIPTION":"Description",
+            "SEASONEPISODE":"Season episode (...S01E120)",
+            "STEEMITUSERNAME":"Steemit username",
+            "STEEMITKEY":"Post key",
+            "BUTTONS":{
+                "CLEAN":"Clean",
+                "PUBLISH":"Publish"
+            }
         }
-    },
-    "WelcomeMessage": "Welcome to the international demo application",
-    "UploadFormTitle": "Title"
+    }
 }
