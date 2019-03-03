@@ -1,10 +1,11 @@
-import { Component, OnInit, HostListener, Inject } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, Sanitizer } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { DirectoryService } from 'src/app/services/directory.service';
 import { ScrollService } from 'src/app/services/scroll.service';
+import { DomSanitizer } from '../../../../node_modules/@angular/platform-browser';
 
 @Component({
   selector: 'app-directory',
@@ -21,7 +22,7 @@ export class DirectoryComponent implements OnInit {
   lastAuthor: string = "";
   finished: boolean = true;
 
-  constructor(private directoryService: DirectoryService, private breakpointObserver: BreakpointObserver, scrollContentService: ScrollService) {
+  constructor(private sanitizer: DomSanitizer,private directoryService: DirectoryService, private breakpointObserver: BreakpointObserver, scrollContentService: ScrollService) {
     this.subscription = scrollContentService.scrollAnnounced$.subscribe(
       () => {
         this.getCards();
@@ -62,6 +63,7 @@ export class DirectoryComponent implements OnInit {
           cols: 1,
           rows: 1,
           votes: element.net_votes,
+          coverimage: metadata.coverimagehash? "https://shareit-network.ddns.net/ipfs/" + metadata.coverimagehash:'https://i.ebayimg.com/images/g/kZ8AAOSwWotbwxny/s-l1600.jpg',
           ipfshash: metadata.ipfshash,
           season: SE.season,
           episode: SE.episode

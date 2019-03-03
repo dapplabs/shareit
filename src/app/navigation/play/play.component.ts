@@ -171,8 +171,6 @@ export class PlayComponent implements OnInit {
     var self = this;
     var ipfsServer = self.ipfsServers[0];
     Steem.api.getContent(this.author, this.permlink, function (err, result) {
-      console.log(err, result, "sdfsdfdsf");
-
       self.post = {
         author: result.author,
         body: result.body.split("}}").pop(),

@@ -12,11 +12,11 @@
   <form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
     <div class="row">
       <mat-form-field class="col-md-12">
-        <input matInput placeholder="Title" formControlName="title">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.TITLE' | translate }}" formControlName="title">
       </mat-form-field>
 
       <mat-form-field class="col-md-12">
-        <textarea matInput placeholder="Description" formControlName="body"></textarea>
+        <textarea matInput placeholder="{{ 'UPLOAD.FORM.DESCRIPTION' | translate }}" formControlName="body"></textarea>
       </mat-form-field>
       
       <div class="col-xl-12">
@@ -24,7 +24,7 @@
       </div>
       
       <!--Upload video input-->
-      <div class="col-xs-12 col-md-6 mat-form-field-wrapper">
+      <div class="col-xs-12 col-md-4 mat-form-field-wrapper">
         <input [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" style="display:none" id="input-file-id" #file type="file" accept=".mp4" (change)="uploadFile(file.files)" />
         <label [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" for="input-file-id" class="col-xl-12 mat-button mat-raised-button mat-primary">
           <span translate>UPLOAD.FORM.SELECTFILE</span>
@@ -32,19 +32,29 @@
       </div>
 
       <!--Upload subtitles input-->
-      <div class="col-xs-12 col-md-6 mat-form-field-wrapper">
+      <div class="col-xs-12 col-md-4 mat-form-field-wrapper">
         <input style="display:none" id="input-file-subtitles" #subinput multiple type="file" [accept]="subtitleFileFormatsExtensions" (change)="uploadSubtitles(subinput.files)"/>
         <label for="input-file-subtitles" class="col-xl-12 mat-button mat-raised-button mat-primary">
           <span translate>UPLOAD.FORM.SELECTSUBTITLES</span>
         </label>
       </div>
+      <!--Upload image input-->
+      <div class="col-xs-12 col-md-4 mat-form-field-wrapper">
+        <input style="display:none" id="input-file-portada" #subinput multiple type="file" accept=".jpg" (change)="uploadPortada(subinput.files)"/>
+        <label for="input-file-portada" class="col-xl-12 mat-button mat-raised-button mat-primary">
+          <span translate>UPLOAD.FORM.SELECTPORTADA</span>
+        </label>
+      </div>
 
       <!--Principal file hashes-->
       <mat-form-field *ngIf="hash.valid" class="col-md-6 col-xs-12">
-        <input matInput placeholder="file hash" formControlName="hash">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.FILEHASH' | translate }}" formControlName="hash">
       </mat-form-field>
       <mat-form-field *ngIf="torrenthash.valid" class="col-md-6 col-xs-12">
-        <input matInput placeholder="torrent file hash" formControlName="torrenthash">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.TORRENTHASH' | translate }}" formControlName="torrenthash">
+      </mat-form-field>
+      <mat-form-field *ngIf="imagehash.valid" class="col-md-6 col-xs-12">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.IMAGEHASH' | translate }}" formControlName="imagehash">
       </mat-form-field>
       <!--+++++++++++++++++++++-->
 
@@ -54,7 +64,7 @@
             <div class="alert alert-normal" role="alert">
               <button type="button" class="close-alert" (click)="removeItem(i)">×</button>
               <mat-form-field class="col-xs-12 col-md-6">
-                <input matInput placeholder="File name" formControlName="fileName">
+                <input matInput placeholder="{{ 'UPLOAD.FORM.FILENAME' | translate }}" formControlName="fileName">
               </mat-form-field>
               <mat-form-field class="col-xs-12 col-md-6">
                 <mat-select formControlName="language" required>
@@ -67,23 +77,23 @@
       </form>
 
       <mat-form-field class="col-md-6 col-xs-12">
-        <input matInput placeholder="tags" formControlName="tags">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.TAGS' | translate }}" formControlName="tags">
       </mat-form-field>
 
       <mat-form-field class="col-md-6 col-xs-12">
-        <input matInput placeholder="SAOS01E15" formControlName="seasonepisode">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.SEASONEPISODE' | translate }}" formControlName="seasonepisode">
       </mat-form-field>
 
       <mat-form-field class="col-md-6 col-xs-12">
-        <input matInput placeholder="Steemit user name" formControlName="username">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.STEEMITUSERNAME' | translate }}" formControlName="username">
       </mat-form-field>
 
       <mat-form-field class="col-md-6 col-xs-12">
-        <input matInput placeholder="private post key" formControlName="key">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.STEEMITKEY' | translate }}" formControlName="key">
       </mat-form-field>
 
-      <button class="col-md-6 col-xs-12 align-self-center" type="submit" mat-flat-button [disabled]="!myform.valid" color="primary">Publish</button>
-      <button class="col-md-6 col-xs-12 align-self-center" mat-flat-button color="accent" (click)="clearForm()">Clear</button>
+      <button class="col-md-6 col-xs-12 align-self-center" type="submit" mat-flat-button [disabled]="!myform.valid" color="primary"><span translate>UPLOAD.FORM.BUTTONS.PUBLISH</span> </button>
+      <button class="col-md-6 col-xs-12 align-self-center" mat-flat-button color="accent" (click)="clearForm()"><span translate>UPLOAD.FORM.BUTTONS.CLEAN</span> </button>
     </div>
   </form>
 </section>

@@ -6,6 +6,7 @@ import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/c
 import { FormBuilder, FormArray } from '@angular/forms';
 var subsrt = require('subsrt');
 var json = require('../../../assets/i18n/language-codes.json');
+var CryptoJS = require("crypto-js");
 
 declare const WebTorrent: any;
 
@@ -61,6 +62,7 @@ export class UploadComponent implements OnInit {
   username: FormControl;
   key: FormControl;
   hash: FormControl;
+  imagehash: FormControl;
   torrenthash: FormControl;
   seasonepisode: FormControl;
 
@@ -91,6 +93,7 @@ export class UploadComponent implements OnInit {
     this.hash = new FormControl('', Validators.required);
     this.torrenthash = new FormControl('', Validators.required);
     this.seasonepisode = new FormControl('', Validators.required);
+    this.imagehash = new FormControl('', Validators.required);
   }
 
   createForm() {
@@ -103,7 +106,8 @@ export class UploadComponent implements OnInit {
       key: this.key,
       hash: this.hash,
       torrenthash: this.torrenthash,
-      seasonepisode: this.seasonepisode
+      seasonepisode: this.seasonepisode,
+      imagehash : this.imagehash
     });
   }
 
@@ -139,6 +143,7 @@ export class UploadComponent implements OnInit {
       seasonepisode: this.seasonepisode.value.toUpperCase(),
       ipfshash: this.hash.value,
       ipfsthash: this.torrenthash.value,
+      coverimagehash: this.imagehash.value,
       tags: this.tags.value.replace(/ /g, "").split(","),
       subtitles: array
     }
@@ -177,6 +182,33 @@ export class UploadComponent implements OnInit {
   addItem(filename: string, hash: string): void {
     this.subtitles.push(this.createItem(filename, hash));
     console.log(this.subtitles);
+  }
+
+  uploadPortada(files){
+    var file = files[0];
+    var self = this;
+    const formData = new FormData();
+    formData.append(file.name, file);
+    
+    this.http.request(
+      new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`,
+        formData,
+        { reportProgress: true })
+      /*new HttpRequest('POST', `https://steemitimages.com/`+this.username.value + '/' + this.key.value,
+        formData,
+        { reportProgress: true })*/
+    ).subscribe(event => {
+      self.updateFileUploadStatus(file, event);
+      switch (event.type) {
+        case HttpEventType.Response:
+          self.updateFileUploadStatus(file, event);
+          self.imagehash.setValue(event.body[Object.keys(event.body)[0]]);
+          break;
+        default:
+          console.log(HttpEventType[event.type]);
+          break;
+      }
+    });
   }
 
   uploadSubtitles(files) {
