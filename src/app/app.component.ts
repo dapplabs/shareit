@@ -3,6 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'ShaReIt';
-  constructor(private translateService: TranslateService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
+  constructor(public loader: LoadingBarService, private translateService: TranslateService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer){
     translateService.setDefaultLang('en');
     translateService.use('en');
     this.matIconRegistry.addSvgIcon(

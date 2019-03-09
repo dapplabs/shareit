@@ -4,6 +4,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { AccountService } from 'src/app/services/account.service';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http'
 import { FormBuilder, FormArray } from '@angular/forms';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 var subsrt = require('subsrt');
 var json = require('../../../assets/i18n/language-codes.json');
 var CryptoJS = require("crypto-js");
@@ -66,9 +67,11 @@ export class UploadComponent implements OnInit {
   torrenthash: FormControl;
   seasonepisode: FormControl;
 
-  constructor(private formBuilder: FormBuilder, private commentService: CommentService, private accountService: AccountService, private http: HttpClient, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(public loader: LoadingBarService, private formBuilder: FormBuilder, private commentService: CommentService, private accountService: AccountService, private http: HttpClient, private changeDetectorRef: ChangeDetectorRef) {
     this.webtorrent = new WebTorrent();
-    setInterval(() => { this.changeDetectorRef.markForCheck(); }, 1000);
+    setInterval(() => {
+      this.changeDetectorRef.markForCheck();
+    }, 1000);
   }
 
   ngOnInit() {
@@ -80,6 +83,7 @@ export class UploadComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    this.loader.set(0);
     this.changeDetectorRef.detach();
     this.webtorrent.destroy();
   }
@@ -287,6 +291,7 @@ export class UploadComponent implements OnInit {
   }
 
   updateFileUploadStatus(file: File, event) {
+    this.loader.set(this.generalProgress);
     this.statusFiles['uploadedSize'][file.name] = event.loaded;
     if (event.type === HttpEventType.UploadProgress)
       this.statusFiles['fileStatus'][file.name] = "uploading";

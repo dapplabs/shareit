@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '../../../../node_modules/@angular/platform-browser';
 import { getGateways } from '../../utils/ipfs.checker';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 declare const WebTorrent: any;
 declare const moment: any;
@@ -26,7 +27,6 @@ export class PlayComponent implements OnInit {
   file: any;
 
   textPeers = new BehaviorSubject<string>("");
-  percent = new BehaviorSubject<number>(0);
   remaining = new BehaviorSubject<string>("");
   downloaded = new BehaviorSubject<string>("");
   length = new BehaviorSubject<string>("");
@@ -67,7 +67,7 @@ export class PlayComponent implements OnInit {
 
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private changeDetectorRef: ChangeDetectorRef, private http: HttpClient) {
+  constructor(private loadingBar: LoadingBarService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private changeDetectorRef: ChangeDetectorRef, private http: HttpClient) {
     setInterval(() => {
       // require view to be updated
       this.changeDetectorRef.markForCheck();
@@ -116,7 +116,7 @@ export class PlayComponent implements OnInit {
       // Statistics
       function onProgress() {
         self.textPeers.next(torrent.numPeers + (torrent.numPeers === 1 ? ' peer' : ' peers'));
-        self.percent.next(Math.round(torrent.progress * 100 * 100) / 100)
+        self.loadingBar.set(Math.round(torrent.progress * 100 * 100) / 100);
         self.downloaded.next(self.prettyBytes(torrent.downloaded))
         self.length.next(self.prettyBytes(torrent.length))
 

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ScrollService } from 'src/app/services/scroll.service';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-navigation',

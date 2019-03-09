@@ -30,6 +30,9 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+
+
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http,'./assets/i18n/');
 }
@@ -119,7 +122,8 @@ export function translateHttpLoaderFactory(http: HttpClient) {
       { path: 'About', component: AboutComponent },
       { path: 'Play/:author/:permlink', component: PlayComponent },
       { path: '**', redirectTo: '' }
-    ])
+    ]),
+    LoadingBarModule
   ],
   providers: [AccountService, DirectoryService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

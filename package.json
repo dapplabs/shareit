@@ -27,6 +27,7 @@
     "@angular/pwa": "^0.10.7",
     "@angular/router": "^7.0.4",
     "@angular/service-worker": "^7.0.4",
+    "@ngx-loading-bar/core": "^4.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "^4.3.1",
