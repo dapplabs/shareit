@@ -103,6 +103,9 @@ MIT
 @angular/service-worker
 MIT
 
+@ngx-loading-bar/core
+MIT
+
 @ngx-translate/core
 MIT
 
