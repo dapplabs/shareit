@@ -35,7 +35,7 @@ export class PlayComponent implements OnInit {
   ended = new BehaviorSubject<boolean>(false);
 
   ipfsServers = [
-    "https://shareit-network.ddns.net/ipfs/",
+    "https://shareit.ddns.net/ipfs/",
     "https://ipfs.io/ipfs/",
     "https://gateway.ipfs.io/ipfs/",
     "https://ipfs.infura.io/ipfs/",

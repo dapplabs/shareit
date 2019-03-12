@@ -63,7 +63,7 @@ export class DirectoryComponent implements OnInit {
           cols: 1,
           rows: 1,
           votes: element.net_votes,
-          coverimage: metadata.coverimagehash? "https://shareit-network.ddns.net/ipfs/" + metadata.coverimagehash:'https://i.ebayimg.com/images/g/kZ8AAOSwWotbwxny/s-l1600.jpg',
+          coverimage: metadata.coverimagehash? "https://shareit.ddns.net/ipfs/" + metadata.coverimagehash:'https://i.ebayimg.com/images/g/kZ8AAOSwWotbwxny/s-l1600.jpg',
           ipfshash: metadata.ipfshash,
           season: SE.season,
           episode: SE.episode

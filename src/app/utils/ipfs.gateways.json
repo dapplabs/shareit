@@ -1,5 +1,5 @@
 [
-    "https://shareit-network.ddns.net/ipfs/:hash",
+    "https://shareit.ddns.net/ipfs/:hash",
 	"https://ipfs.io/ipfs/:hash",
 	"https://gateway.ipfs.io/ipfs/:hash",
 	"https://ipfs.infura.io/ipfs/:hash",
