@@ -195,7 +195,7 @@ export class UploadComponent implements OnInit {
     formData.append(file.name, file);
     
     this.http.request(
-      new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`,
+      new HttpRequest('POST', `https://shareit.ddns.net/api/upload`,
         formData,
         { reportProgress: true })
       /*new HttpRequest('POST', `https://steemitimages.com/`+this.username.value + '/' + this.key.value,
@@ -268,7 +268,7 @@ export class UploadComponent implements OnInit {
         formData.append(file.name + '.torrent', torrentFile, file.name + '.torrent');
 
         self.http.request(
-          new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`,
+          new HttpRequest('POST', `https://shareit.ddns.net/api/upload`,
             formData,
             { reportProgress: true })
         ).subscribe(event => {
@@ -315,7 +315,7 @@ export class UploadComponent implements OnInit {
     formData.append(file.name, file, file.name);
 
     self.http.request(
-      new HttpRequest('POST', `https://shareit-network.ddns.net/api/upload`,
+      new HttpRequest('POST', `https://shareit.ddns.net/api/upload`,
         formData,
         { reportProgress: true })
     ).subscribe(event => {

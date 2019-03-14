@@ -1,4 +1,12 @@
-# Shareit [![CircleCI](https://circleci.com/gh/dapplabs/shareit.svg?style=svg)](https://circleci.com/gh/dapplabs/shareit)
+# Shareit
+
+[![CircleCI](https://circleci.com/gh/dapplabs/shareit.svg?style=svg)](https://circleci.com/gh/dapplabs/shareit)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/dapplabs/shareit.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dapplabs/shareit/alerts/)
+
+
+
+
+
 ## WebPage: https://dapplabs.github.io/shareit/
 
 ## Decentralized content sharing application.
