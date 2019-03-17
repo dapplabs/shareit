@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Inject, Sanitizer } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -90,11 +90,10 @@ export class DirectoryComponent implements OnInit {
 
       if (seasonepisode[index] == 'S') {
         season = 'Sea.' + temp.split("").reverse().join("");
-        temp = '';
         break;
       }
     }
-    return { season, episode }
+    return { season, episode } as any;
   }
 
   /** Based on the screen size, switch from standard to one column per row */

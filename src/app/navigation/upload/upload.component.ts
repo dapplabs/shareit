@@ -2,12 +2,11 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CommentService } from 'src/app/services/comment.service';
 import { AccountService } from 'src/app/services/account.service';
-import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http'
+import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http'
 import { FormBuilder, FormArray } from '@angular/forms';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 var subsrt = require('subsrt');
 var json = require('../../../assets/i18n/language-codes.json');
-var CryptoJS = require("crypto-js");
 
 declare const WebTorrent: any;
 

@@ -4,7 +4,6 @@ import * as Steem from '../../../../node_modules/steem/lib';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpRequest, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '../../../../node_modules/@angular/platform-browser';
-import { getGateways } from '../../utils/ipfs.checker';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 declare const WebTorrent: any;

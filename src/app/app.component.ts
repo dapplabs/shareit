@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';

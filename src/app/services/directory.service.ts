@@ -1,5 +1,5 @@
 import * as Steem from '../../../node_modules/steem/lib';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
