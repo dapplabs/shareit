@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ApplicationRef, ChangeDetectorRef, DoCheck, Sanitizer } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as Steem from '../../../../node_modules/steem/lib';
 import { BehaviorSubject } from 'rxjs';
