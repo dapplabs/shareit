@@ -1,3 +1,39 @@
-<form [formGroup]="categoryGroup">
-  <dynamic-material-form [group]="categoryGroup" [model]="categoryFormModel"></dynamic-material-form>
-</form>
+<div class="container">
+
+
+  <mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="categoryGroup">
+      <form [formGroup]="categoryGroup">
+        <ng-template matStepLabel>Select a categorie</ng-template>
+        <form [formGroup]="categoryGroup">
+          <dynamic-material-form [group]="categoryGroup" [model]="categoryFormModel"></dynamic-material-form>
+        </form>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="postGroup">
+      <form [formGroup]="postGroup">
+        <ng-template matStepLabel>Create the post</ng-template>
+        <form [formGroup]="postGroup">
+          <dynamic-material-form [group]="postGroup" [model]="postFormModel"></dynamic-material-form>
+        </form>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  <pre>{{categoryGroup.value | json}}</pre>
+  <pre>{{postGroup.value | json}}</pre>
+</div>
