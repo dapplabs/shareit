@@ -1,15 +1,7 @@
-<section *ngIf="submitted" class="container">
-  <div class="row">
-    <svg class="col-md-12 checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-      <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-    </svg>
-    <button class="col-md-12" mat-flat-button color="warn" (click)="submitted = false">Upload more</button>
-  </div>
-</section>
-<section *ngIf="!submitted" class="container">
-  <form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
-    <div class="row">
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="form">
+    <form [formGroup]="myform">
+      <ng-template matStepLabel>Fill out your name</ng-template>
       <mat-form-field class="col-md-12">
         <input matInput placeholder="{{ 'UPLOAD.FORM.TITLE' | translate }}" formControlName="title">
       </mat-form-field>
@@ -17,29 +9,70 @@
       <mat-form-field class="col-md-12">
         <textarea matInput placeholder="{{ 'UPLOAD.FORM.DESCRIPTION' | translate }}" formControlName="body"></textarea>
       </mat-form-field>
-      
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <div class="row">
+      <svg class="col-md-12 checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+      </svg>
+      <button class="col-md-12" mat-flat-button color="warn" (click)="submitted = false">Upload more</button>
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+<section *ngIf="!submitted" class="container">
+  <form novalidate [formGroup]="myform" (ngSubmit)="onSubmit()">
+    <div class="row">
+
+
       <div class="col-xl-12">
         <div class="status" *ngFor="let item of filesstatus" [ngClass]="item"></div>
       </div>
-      
+
       <!--Upload video input-->
       <div class="col-xs-12 col-md-4 mat-form-field-wrapper">
-        <input [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" style="display:none" id="input-file-id" #file type="file" accept=".mp4" (change)="uploadFile(file.files)" />
-        <label [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" for="input-file-id" class="col-xl-12 mat-button mat-raised-button mat-primary">
+        <input [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" style="display:none" id="input-file-id"
+          #file type="file" accept=".mp4" (change)="uploadFile(file.files)" />
+        <label [attr.disabled]="(hash.valid || torrenthash.valid)? true:null" for="input-file-id"
+          class="col-xl-12 mat-button mat-raised-button mat-primary">
           <span translate>UPLOAD.FORM.SELECTFILE</span>
         </label>
       </div>
 
       <!--Upload subtitles input-->
       <div class="col-xs-12 col-md-4 mat-form-field-wrapper">
-        <input style="display:none" id="input-file-subtitles" #subinput multiple type="file" [accept]="subtitleFileFormatsExtensions" (change)="uploadSubtitles(subinput.files)"/>
+        <input style="display:none" id="input-file-subtitles" #subinput multiple type="file"
+          [accept]="subtitleFileFormatsExtensions" (change)="uploadSubtitles(subinput.files)" />
         <label for="input-file-subtitles" class="col-xl-12 mat-button mat-raised-button mat-primary">
           <span translate>UPLOAD.FORM.SELECTSUBTITLES</span>
         </label>
       </div>
       <!--Upload image input-->
       <div class="col-xs-12 col-md-4 mat-form-field-wrapper">
-        <input style="display:none" id="input-file-portada" #subinput multiple type="file" accept=".jpg" (change)="uploadPortada(subinput.files)"/>
+        <input style="display:none" id="input-file-portada" #subinput multiple type="file" accept=".jpg"
+          (change)="uploadPortada(subinput.files)" />
         <label for="input-file-portada" class="col-xl-12 mat-button mat-raised-button mat-primary">
           <span translate>UPLOAD.FORM.SELECTPORTADA</span>
         </label>
@@ -59,7 +92,8 @@
 
       <form style="padding: 0px;" class="col-md-12 col-xs-12" [formGroup]="subForm">
         <div style="padding: 0px;" formArrayName="sub_titles">
-          <div style="padding: 0px;" *ngFor="let item of subtitles.controls; let pointIndex=index" [formGroupName]="pointIndex">
+          <div style="padding: 0px;" *ngFor="let item of subtitles.controls; let pointIndex=index"
+            [formGroupName]="pointIndex">
             <div class="alert alert-normal" role="alert">
               <button type="button" class="close-alert" (click)="removeItem(i)">×</button>
               <mat-form-field class="col-xs-12 col-md-6">
@@ -91,8 +125,10 @@
         <input matInput placeholder="{{ 'UPLOAD.FORM.STEEMITKEY' | translate }}" formControlName="key">
       </mat-form-field>
 
-      <button class="col-md-6 col-xs-12 align-self-center" type="submit" mat-flat-button [disabled]="!myform.valid" color="primary"><span translate>UPLOAD.FORM.BUTTONS.PUBLISH</span> </button>
-      <button class="col-md-6 col-xs-12 align-self-center" mat-flat-button color="accent" (click)="clearForm()"><span translate>UPLOAD.FORM.BUTTONS.CLEAN</span> </button>
+      <button class="col-md-6 col-xs-12 align-self-center" type="submit" mat-flat-button [disabled]="!myform.valid"
+        color="primary"><span translate>UPLOAD.FORM.BUTTONS.PUBLISH</span> </button>
+      <button class="col-md-6 col-xs-12 align-self-center" mat-flat-button color="accent" (click)="clearForm()"><span
+          translate>UPLOAD.FORM.BUTTONS.CLEAN</span> </button>
     </div>
   </form>
 </section>

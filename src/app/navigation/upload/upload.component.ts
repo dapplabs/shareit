@@ -18,7 +18,12 @@ declare const WebTorrent: any;
 export class UploadComponent implements OnInit {
   submitted: boolean = false;
 
-  myform: FormGroup;
+  form: FormGroup;
+
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  tirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
   subForm: FormGroup;
 
   statusFiles = {
@@ -100,22 +105,35 @@ export class UploadComponent implements OnInit {
   }
 
   createForm() {
-    this.myform = new FormGroup({
-      subForm: this.subForm,
+    this.firstFormGroup = new FormGroup({
+      tags: this.tags,
+    });
+    this.secondFormGroup = new FormGroup({
       title: this.title,
       body: this.body,
-      tags: this.tags,
-      username: this.username,
-      key: this.key,
+      imagehash : this.imagehash,
+      seasonepisode: this.seasonepisode
+    });
+    this.tirdFormGroup = new FormGroup({
       hash: this.hash,
       torrenthash: this.torrenthash,
-      seasonepisode: this.seasonepisode,
-      imagehash : this.imagehash
+      subForm: this.subForm,
+    });
+    this.fourthFormGroup = new FormGroup({
+      username: this.username,
+      key: this.key,
+    });
+
+    this.form = new FormGroup({
+      firstFormGroup: this.firstFormGroup,
+      secondFormGroup: this.secondFormGroup,
+      tirdFormGroup: this.tirdFormGroup,
+      fourthFormGroup: this.fourthFormGroup
     });
   }
 
   clearForm() {
-    this.myform.reset();
+    this.form.reset();
     const subtitles = this.subForm.get('sub_titles') as FormArray;
     this.webtorrent = new WebTorrent();
     this.statusFiles = {
@@ -151,7 +169,7 @@ export class UploadComponent implements OnInit {
       subtitles: array
     }
 
-    if (this.myform.valid) {
+    if (this.form.valid) {
       this.commentService.Post(
         this.username.value,
         this.key.value,

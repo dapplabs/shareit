@@ -34,7 +34,6 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 import { DynamicFormsCoreModule } from "@ng-dynamic-forms/core";
 import { DynamicFormsMaterialUIModule } from "@ng-dynamic-forms/ui-material";
-import { PublishComponent } from './navigation/publish/publish.component';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http,'./assets/i18n/');
@@ -49,8 +48,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     NewsComponent,
     UploadComponent,
     AboutComponent,
-    PlayComponent,
-    PublishComponent
+    PlayComponent
   ],
   imports: [
     TranslateModule.forRoot({
@@ -125,7 +123,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
       { path: 'Home', component: HomeComponent },
       { path: 'Directory', component: DirectoryComponent },
       { path: 'News', component: NewsComponent },
-      { path: 'Upload', component: PublishComponent },
+      { path: 'Upload', component: UploadComponent },
       { path: 'About', component: AboutComponent },
       { path: 'Play/:author/:permlink', component: PlayComponent },
       { path: '**', redirectTo: '' }
