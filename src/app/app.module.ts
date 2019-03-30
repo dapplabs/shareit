@@ -34,6 +34,10 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 import { DynamicFormsCoreModule } from "@ng-dynamic-forms/core";
 import { DynamicFormsMaterialUIModule } from "@ng-dynamic-forms/ui-material";
+import { FileFormComponent } from './navigation/upload/file-form/file-form.component';
+import { UserFormComponent } from './navigation/upload/user-form/user-form.component';
+import { PostFormComponent } from './navigation/upload/post-form/post-form.component';
+import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 
 export function translateHttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http,'./assets/i18n/');
@@ -48,7 +52,10 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     NewsComponent,
     UploadComponent,
     AboutComponent,
-    PlayComponent
+    PlayComponent,
+    FileFormComponent,
+    UserFormComponent,
+    PostFormComponent
   ],
   imports: [
     TranslateModule.forRoot({
@@ -58,6 +65,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    NgbProgressbarModule,
     ReactiveFormsModule,
     DynamicFormsCoreModule,
     DynamicFormsMaterialUIModule,

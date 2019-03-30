@@ -27,6 +27,7 @@
     "@angular/pwa": "^0.13.6",
     "@angular/router": "^7.0.4",
     "@angular/service-worker": "^7.0.4",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.0",
     "@ng-dynamic-forms/core": "^7.1.1",
     "@ng-dynamic-forms/ui-material": "^7.1.1",
     "@ngx-loading-bar/core": "^4.2.0",

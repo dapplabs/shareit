@@ -1,0 +1,51 @@
+<section class="container">
+  <form [formGroup]="file_form">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div id="output">
+          <video id='VideoPlayer' #VideoPlayer controls>
+            <track *ngFor="let sub of videosubtitles" [label]="sub.lang" kind="subtitles" [srclang]="sub.lang"
+              [src]="sub.file" default>
+          </video>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <!--Upload video input-->
+        <div style="margin: auto 0;" class="col-md-12 mat-form-field-wrapper">
+          <input style="display:none" id="input-file-id" #file type="file" accept=".mp4"
+            (change)="uploadFile(file.files)" />
+          <label for="input-file-id" class="col-xl-12 mat-button mat-raised-button mat-primary">
+            <span translate>UPLOAD.FORM.SELECTFILE</span>
+          </label>
+        </div>
+        <!--Upload subtitles input-->
+        <div style="margin: auto 0;" class="col-md-12 mat-form-field-wrapper">
+          <input style="display:none" id="input-file-subtitles" #subinput multiple type="file"
+            [accept]="subtitleFileFormatsExtensions" (change)="uploadSubtitles(subinput.files)" />
+          <label for="input-file-subtitles" class="col-xl-12 mat-button mat-raised-button mat-primary">
+            <span translate>UPLOAD.FORM.SELECTSUBTITLES</span>
+          </label>
+        </div>
+      </div>
+      <ngb-progressbar class="col-md-12" type="siccess" [value]="progress" [max]="progressmax" [striped]="true" [animated]="true"><i>{{progress==progressmax?'Complete!': progress + '/' + progressmax }}</i></ngb-progressbar>
+      <form style="padding: 0px;" class="col-md-12" [formGroup]="_subForm">
+        <div style="padding: 0px;" formArrayName="sub_titles">
+          <div style="padding: 0px;" *ngFor="let item of subtitles.controls; let pointIndex=index"
+            [formGroupName]="pointIndex">
+            <div class="alert alert-normal" role="alert">
+              <button type="button" class="close-alert" (click)="removeItem(i)">×</button>
+              <mat-form-field class="col-xs-12 col-sm-6">
+                <input matInput placeholder="{{ 'UPLOAD.FORM.FILENAME' | translate }}" formControlName="fileName">
+              </mat-form-field>
+              <mat-form-field class="col-xs-12 col-sm-5">
+                <mat-select (selectionChange)="updateSubtitles()" formControlName="language" required>
+                  <mat-option *ngFor="let lang of languagecodes" [value]="lang.code">{{lang.language}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </form>
+</section>

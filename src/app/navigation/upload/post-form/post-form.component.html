@@ -1,0 +1,45 @@
+<section class="container">
+  <form [formGroup]="post_form">
+    <div class="row">
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="{{ 'UPLOAD.FORM.TITLE' | translate }}" formControlName="title">
+      </mat-form-field>
+
+      <div class="col-md-12">
+        <mat-card class="example-card" [ngStyle]="{'background-image': 'url(' + cover + ')'}">
+          <mat-card-header>
+            <mat-card-title>{{title}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="show-on-hover hvrbox" style="text-shadow: 0 2px 0 black;">
+              <p class="noselect" style="padding-top: 25px;">
+                  {{body}}
+                </p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <mat-chip-list>
+              <mat-chip color="warn" selected>Season 1</mat-chip>
+              <mat-chip color="warn" selected>Episode 155</mat-chip>
+            </mat-chip-list>
+            <button mat-button>PLAY</button>
+            <button mat-button>LIKE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div>
+        <br>
+      </div>
+      <div class="col-xs-12 col-md-12 mat-form-field-wrapper">
+        <input style="display:none" id="input-file-portada" #subinput multiple type="file" accept=".jpg"
+          (change)="uploadPortada(subinput.files)" />
+        <label for="input-file-portada" class="col-xl-12 mat-button mat-raised-button mat-primary">
+          <span translate>UPLOAD.FORM.SELECTPORTADA</span>
+        </label>
+      </div>
+      <mat-form-field class="col-md-12">
+        <textarea matInput placeholder="{{ 'UPLOAD.FORM.DESCRIPTION' | translate }}" formControlName="body"></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</section>
