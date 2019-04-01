@@ -65,7 +65,7 @@ export class CommentService {
     jsonMetadata.app = "shareit/0.2";
     jsonMetadata = jsonMetadata || {};
 
-    body = "{{ https://marce1994.github.io/MyPWA/#/Play/"+username+"/" + permLink + " }}" + body;
+    body = "{{ dapplabs.github.io/shareit/#/Play/"+username+"/" + permLink + " }}" + body;
     
     Steem.broadcast.comment(postingkey, '',  main_tag, username, permLink, title, body, jsonMetadata, function (err, result) {
         console.log(err, result);
