@@ -41,7 +41,8 @@
     "steem": "^0.7.3",
     "subsrt": "^1.0.0",
     "terser": "^3.17.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "tar": ">=4.4.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.8",
@@ -63,6 +64,7 @@
     "protractor": "~6.0.0",
     "tslint": "~5.16.0",
     "ts-node": "~8.1.0",
-    "typescript": "^3.2.4"
+    "typescript": "^3.2.4",
+    "tar": ">=4.4.2"
   }
 }
