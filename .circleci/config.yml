@@ -21,6 +21,9 @@ jobs:
             - run:
                 name: Install local dependencies
                 command: npm install
+            - run:
+                name: rebuild nodesass
+                command: npm rebuild node-sass
             # Cache local dependencies if they don't exist
             - save_cache:
                 key: v2-dependencies-{{ checksum "package.json" }}
