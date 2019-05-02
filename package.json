@@ -37,7 +37,7 @@
     "jquery": "^3.4.0",
     "mat-video": "^2.5.0",
     "ngx-infinite-scroll": "^7.1.0",
-    "rxjs": "~6.4.0",
+    "rxjs": "~6.5.1",
     "steem": "^0.7.3",
     "subsrt": "^1.0.0",
     "terser": "^3.17.0",
