@@ -20,7 +20,7 @@ jobs:
             # Install project dependencies
             - run:
                 name: Install local dependencies
-                command: npm install && npm install @angular/cli
+                command: npm install && npm install @angular/compiler-cli
             - run:
                 name: rebuild nodesass
                 command: npm rebuild node-sass
