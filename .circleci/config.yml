@@ -65,7 +65,7 @@ jobs:
                 key: v2-docs-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
             # Install AWS cli
             - run: npm i angular-cli-ghpages --save-dev
-            - run: npx angular-cli-ghpages --dir=docs --repo=https://$Token@github.com/dapplabs/shareit.git --name="circleci" --email=pablo.m.bianco@hotmail.com --no-silent
+            - run: npx angular-cli-ghpages --dir=docs --repo=https://$Token@github.com/dapplabs/shareit.git --name="circleci" --email=358126+marce1994@users.noreply.github.com --no-silent
             
 workflows:
   version: 2
