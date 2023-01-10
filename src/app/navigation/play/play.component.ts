@@ -55,7 +55,6 @@ export class PlayComponent implements OnInit {
     "https://ipfs.renehsz.com/ipfs/",
     "https://cloudflare-ipfs.com/ipfs/",
     "https://ipns.co/",
-    "https://ipfs.netw0rk.io/ipfs/",
     "https://gateway.swedneck.xyz/ipfs/"
     //...
   ];
